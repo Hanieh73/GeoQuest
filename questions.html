@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <script defer src="./index.js"></script>
+    <title>GeoQuest</title>
+</head>
+<body>
+    <nav></nav>
+    <main>
+        <div class="quiz-container">
+            <h1>Game Mode - World Tour</h1>
+            <p id="question">Question 1: What is the capital of Scotland?</p>
+
+            <label for="" class="answer-radio">
+                <input type="radio", name="answer" value="Stirling"> a) Stirling
+            </label>
+            <label for="" class="answer-radio">
+                <input type="radio", name="answer" value="Glasgow"> b) Glasgow
+            </label>
+            <label for="" class="answer-radio">
+                <input type="radio", name="answer" value="Edinburgh"> c) Edinburgh
+            </label>
+            <label for="" class="answer-radio">
+                <input type="radio", name="answer" value="Perth"> d) Perth
+            </label>
+
+            <button id="submit-button" onclick="checkAnswer()">Submit</button>
+
+            <p id="question">Question 2: What is the capital of Scotland?</p>
+
+            <div class="answer-block" onclick="selectAnswer('Stirling')">Stirling</div>
+            <div class="answer-block" onclick="selectAnswer('Glasgow')">Glasgow</div>
+            <div class="answer-block" onclick="selectAnswer('Edinburgh')">Edinburgh</div>
+            <div class="answer-block" onclick="selectAnswer('Perth')">Perth</div>
+        </div>
+        <p id="api"></p>
+    </main>
+</body>
+</html>
