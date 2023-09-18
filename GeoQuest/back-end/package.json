@@ -1,0 +1,28 @@
+{
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "node": "^20.6.0"
+  },
+  "name": "geoquest",
+  "description": "An educational geography game designed for a consortium of schools",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hanieh73/GeoQuest.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hanieh73/GeoQuest/issues"
+  },
+  "homepage": "https://github.com/Hanieh73/GeoQuest#readme"
+}

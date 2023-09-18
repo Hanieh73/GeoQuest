@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GeoQuest</title>
+    <link rel="icon" type="image/png" href="./images/red-pinpoint.jpeg" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body class="align">
+    <nav class="navbar navbar-light bg-light d-flex justify-content-center">
+      <a class="navbar-brand" href="./index.html">
+        <img
+          src="./images/pinpoint-map-icon.png"
+          width="30"
+          height="30"
+          class="d-inline-block align-top"
+          alt=""
+        />
+        GeoQuest
+      </a>
+    </nav>
+
+    <!-- <form class="form-inline" action="./index.html" method="POST">
+      <label class="sr-only" for="inlineFormInputName2">Name</label>
+      <div class="d-flex justify-content-center m-5">
+        <input
+          type="text"
+          class="form-control mb-2 mr-sm-2 length"
+          id="inlineFormInputName2"
+          placeholder="Jane Doe"
+        />
+
+        <button type="submit" class="btn btn-primary mb-2">Submit</button>
+      </div>
+    </form> -->
+    <div
+      class="d-flex flex-column align-items-center justify-content-center border h-100"
+    >
+      <h1>Welcome to GeoQuest!</h1>
+      <form
+        id="user-form"
+        class="d-flex flex-column align-items-center"
+        action="./index.html"
+        method="POST"
+      >
+        <label>Please Enter Your Name</label>
+        <input
+          type="text"
+          class="form-control mb-2 mr-sm-2 length"
+          id="formName"
+          placeholder="John Smith"
+        />
+        <button type="submit" class="btn btn-primary mb-2" id="form-btn">
+          Submit
+        </button>
+      </form>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="index.js"></script>
+  </body>
+</html>
