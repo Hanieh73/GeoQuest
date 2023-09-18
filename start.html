@@ -44,12 +44,17 @@
       class="d-flex flex-column align-items-center justify-content-center border h-100"
     >
       <h1>Welcome to GeoQuest!</h1>
-      <form class="d-flex flex-column align-items-center" action="/index.html">
+      <form
+        id="user-form"
+        class="d-flex flex-column align-items-center"
+        action="./index.html"
+        method="POST"
+      >
         <label>Please Enter Your Name</label>
         <input
           type="text"
           class="form-control mb-2 mr-sm-2 length"
-          id="inlineFormInputName2"
+          id="formName"
           placeholder="John Smith"
         />
         <button type="submit" class="btn btn-primary mb-2" id="form-btn">
