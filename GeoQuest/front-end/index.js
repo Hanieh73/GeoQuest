@@ -2,18 +2,27 @@ const worldTourBtn = document.querySelector("#world-tour");
 // const timeChallengeBtn = document.querySelector("#time-challenge");
 // const form = document.querySelector("#user-form");
 
-worldTourBtn.addEventListener("click", () => {
-  //redirect to the questions page and passing a parameter to indicate the quiz type is world tour
-  window.location.href = "questions.html?type=world-tour";
+const page = document.body.id;
+
+let testName;
+console.log("hello", page);
+
+if (page == "start") {
+  console.log("begin");
+  form.addEventListener("submit", (e) => {
+    // e.preventDefault();
+    testName = e.target.formName.value;
+    localStorage.setItem("name", testName);
+    console.log(localStorage.getItem("name"));
+  });
+} else if (page == "index") {
+  const userMsg = document.querySelector("#user-msg");
+  userMsg.textContent = `Welcome ${localStorage.getItem("name")}!`;
+}
+
+//event listener on form not button
+//got rid of the method="POST". the e.preventDefault was the issue
+
+document.addEventListener("dblclick", () => {
+  console.log(testName);
 });
-
-// timeChallengeBtn.addEventListener("click", () => {
-//   //redirect to the questions page, but will add setTimeout later on
-//   window.location.href = "questions.html";
-// });
-
-// form.addEventListener("submit", (e) => {
-//   e.preventDefault();
-//   console.log(e.target.formName.value);
-// });
-// //event listener on form not button
