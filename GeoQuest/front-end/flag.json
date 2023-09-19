@@ -67,7 +67,7 @@
         "right_answer": "lebanon"
     },
     {
-        "img": "somalia.png",
+        "img": "./images/somalia.png",
         "options": [
             "vietnam",
             "somalia",
@@ -76,7 +76,7 @@
         "right_answer": "somalia"
     },
     {
-        "img": "uzbekistan.png",
+        "img": "./images/uzbekistan.png",
         "options": [
             "uzbekistan",
             "tajikistan",
@@ -85,7 +85,7 @@
         "right_answer": "uzbekistan"
     },
     {
-        "img": "mexico.png",
+        "img": "./images/mexico.png",
         "options": [
             "italy",
             "iran",
