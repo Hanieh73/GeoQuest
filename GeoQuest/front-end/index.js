@@ -1,6 +1,6 @@
 const worldTourBtn = document.querySelector("#world-tour");
-const timeChallengeBtn = document.querySelector("#time-challenge");
-const form = document.querySelector("#user-form");
+// const timeChallengeBtn = document.querySelector("#time-challenge");
+// const form = document.querySelector("#user-form");
 
 const page = document.body.id;
 
