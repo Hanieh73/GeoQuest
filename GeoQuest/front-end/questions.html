@@ -1,42 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./index.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css" />
     <script defer src="./index.js"></script>
-    <title>GeoQuest</title>
-</head>
-<body>
+    <title>GeoQuest Questions</title>
+  </head>
+  <body>
     <nav></nav>
     <main>
-        <div class="quiz-container">
-            <h1>Game Mode - World Tour</h1>
-            <p id="question">Question 1: What is the capital of Scotland?</p>
+      <div class="quiz-container">
+        <h1>Game Mode - World Tour</h1>
+        <p id="question">Loading question...</p>
 
-            <label for="" class="answer-radio">
-                <input type="radio", name="answer" value="Stirling"> a) Stirling
-            </label>
-            <label for="" class="answer-radio">
-                <input type="radio", name="answer" value="Glasgow"> b) Glasgow
-            </label>
-            <label for="" class="answer-radio">
-                <input type="radio", name="answer" value="Edinburgh"> c) Edinburgh
-            </label>
-            <label for="" class="answer-radio">
-                <input type="radio", name="answer" value="Perth"> d) Perth
-            </label>
 
-            <button id="submit-button" onclick="checkAnswer()">Submit</button>
-
-            <p id="question">Question 2: What is the capital of Scotland?</p>
-
-            <div class="answer-block" onclick="selectAnswer('Stirling')">Stirling</div>
-            <div class="answer-block" onclick="selectAnswer('Glasgow')">Glasgow</div>
-            <div class="answer-block" onclick="selectAnswer('Edinburgh')">Edinburgh</div>
-            <div class="answer-block" onclick="selectAnswer('Perth')">Perth</div>
+        <!-- added the matching label for attribute with the id -->
+        <div id="answer-container">
+          <label for="answerA" class="answer-radio">
+            <input type="radio" id="answerA" name="answer" value="Stirling" /> a)
+            Stirling
+          </label>
+          <label for="answerB" class="answer-radio">
+            <input type="radio" id="answerB" name="answer" value="Glasgow" /> b)
+            Glasgow
+          </label>
+          <label for="answerC" class="answer-radio">
+            <input type="radio" id="answerC" name="answer" value="Edinburgh" /> c)
+            Edinburgh
+          </label>
+          <label for="answerD" class="answer-radio">
+            <input type="radio" id="answerD" name="answer" value="Perth" /> d)
+            Perth
+          </label>
         </div>
-        <p id="api"></p>
+        <button id="submit-button" onclick="checkAnswer(1)">Submit</button>
+        <p id="result"></p>
+
     </main>
-</body>
+    <!-- linking the questions.html to the questions.js file -->
+<script src="./questions.js?type=world-tour"></script>
+  </body>
 </html>
