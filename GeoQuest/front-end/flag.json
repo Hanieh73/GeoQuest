@@ -1,0 +1,97 @@
+[
+    {
+        "img": "./images/argentina.png",
+        "options": [
+            "guatemala",
+            "argentina",
+            "uruguay"
+        ],
+        "right_answer": "argentina"
+    },
+
+    {
+        "img": "./images/brazil.png",
+        "options": [
+            "bolivia",
+            "chile",
+            "brazil"
+        ],
+        "right_answer": "brazil"
+    },
+
+    {
+        "img": "./images/canada.png",
+        "options": [
+            "canada",
+            "egypt",
+            "tunisia"
+        ],
+        "right_answer": "canada"
+    },
+
+    {
+        "img": "./images/egypt.png",
+        "options": [
+            "syria",
+            "egypt",
+            "iraq"
+        ],
+        "right_answer": "egypt"
+    },
+
+    {
+        "img": "./images/germany.png",
+        "options": [
+            "belgium",
+            "ireland",
+            "germany"
+        ],
+        "right_answer": "germany"
+    },
+    {
+        "img": "./images/iraq.png",
+        "options": [
+            "iraq",
+            "syria",
+            "yemen"
+        ],
+        "right_answer": "iraq"
+    },
+    {
+        "img": "./images/lebanon.png",
+        "options": [
+            "canada",
+            "lebanon",
+            "morocco"
+        ],
+        "right_answer": "lebanon"
+    },
+    {
+        "img": "somalia.png",
+        "options": [
+            "vietnam",
+            "somalia",
+            "albania"
+        ],
+        "right_answer": "somalia"
+    },
+    {
+        "img": "uzbekistan.png",
+        "options": [
+            "uzbekistan",
+            "tajikistan",
+            "kyrgyzstan"
+        ],
+        "right_answer": "uzbekistan"
+    },
+    {
+        "img": "mexico.png",
+        "options": [
+            "italy",
+            "iran",
+            "mexico"
+        ],
+        "right_answer": "mexico"
+    }
+
+]
