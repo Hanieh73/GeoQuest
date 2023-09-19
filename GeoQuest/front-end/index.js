@@ -10,8 +10,14 @@ console.log("hello", page);
 if (page == "start") {
   console.log("begin");
   form.addEventListener("submit", (e) => {
+    // e.preventDefault();
     testName = e.target.formName.value;
+    localStorage.setItem("name", testName);
+    console.log(localStorage.getItem("name"));
   });
+} else if (page == "index") {
+  const userMsg = document.querySelector("#user-msg");
+  userMsg.textContent = `Welcome ${localStorage.getItem("name")}!`;
 }
 
 //event listener on form not button
