@@ -114,3 +114,31 @@ function showResults(count) {
 btnNewGame.addEventListener("click", () => {
 	window.location.reload();
 });
+
+let timerElement = document.getElementById("timer");
+let timerMessageElement = document.getElementById("timer-message");
+let timeLeft = 5; // Set the initial time (in seconds)
+
+function startTimer() {
+	function updateTimer() {
+		if (timeLeft > 0) {
+			timeLeft--;
+			timerElement.textContent = timeLeft;
+		} else {
+			// Time's up, display a message and reset the timer
+			clearInterval(timerInterval);
+			timerMessageElement.textContent = "Time's up! Click here to try again.";
+			// You can also add a click event to the message for retrying
+			timerMessageElement.addEventListener("click", () => {
+				// Add any code to retry the game here, for example:
+				window.location.reload(); // Reload the page to start over
+			});
+		}
+	}
+
+	updateTimer(); // Call the function once to update the initial display
+	let timerInterval = setInterval(updateTimer, 1000); // Update the timer every 1 second (1000 milliseconds)
+}
+
+// Start the timer when the page loads
+window.addEventListener("load", startTimer);
