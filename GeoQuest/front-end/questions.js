@@ -1,26 +1,3 @@
-const submitBtn = document.querySelector("#submit-button");
-const fiftyBtn = document.querySelector("#fifty-fifty");
-
-let cIndex = 0;
-let score = 0;
-let lifeline = 3;
-
-submitBtn.addEventListener("click", function () {
-  checkAnswer(cIndex);
-});
-
-fiftyBtn.addEventListener("click", async function () {
-  let response = await fetch(`http://localhost:3000/questions/`);
-  const data = await response.json();
-  const currentQuestion = data[cIndex];
-  if (lifeline > 0) {
-    fifty_fifty(currentQuestion);
-    lifeline -= 1;
-  }
-});
-
-loadQuestions(cIndex);
-
 async function loadQuestions(currentQuestionIndex) {
   // console.log(cIndex);
   try {
@@ -39,6 +16,8 @@ async function loadQuestions(currentQuestionIndex) {
     return [];
   }
 }
+
+//Nadim's display function
 
 function displayQuestions(questions, currentQuestionIndex) {
   const currentQuestion = questions[currentQuestionIndex];
@@ -91,90 +70,114 @@ function displayQuestions(questions, currentQuestionIndex) {
   resultElement.textContent = "";
 }
 
-async function checkAnswer(cIndex) {
-  if (document.querySelector("input[name=answer]:checked")) {
-    let chosenAnswer = document.querySelector(
-      "input[name=answer]:checked"
-    ).value;
+document.addEventListener("DOMContentLoaded", () => {
+  const submitBtn = document.querySelector("#submit-button");
+  const fiftyBtn = document.querySelector("#fifty-fifty");
 
-    let resp = await fetch(`http://localhost:3000/questions/${cIndex + 1}`);
+  let cIndex = 0;
+  let score = 0;
+  let lifeline = 3;
 
-    if (resp.ok) {
-      const data = await resp.json();
+  submitBtn.addEventListener("click", function () {
+    checkAnswer(cIndex);
+  });
 
-      if (chosenAnswer == data.correct_answer) {
-        console.log("Correct Answer");
-        score += 1;
-      } else {
-        console.log("Wrong Answer");
-      }
-      isLastQuestion();
-    }
-  } else {
-    console.log("unchecked");
-    alert("NO ANSWER SELECTED! PLEASE SELECT AN ANSWER!");
-  }
-}
-
-async function isLastQuestion() {
-  let resp = await fetch(`http://localhost:3000/questions`);
-  if (resp.ok) {
-    const data = await resp.json();
-    if (cIndex == data.length - 1) {
-      //MAKE SOMETHING SAYING THAT WAS THE LAST QUESTION OR JUST SHOW SCORES
-      console.log(`THE END! Your score is ${score}/15`);
-      submitBtn.disabled = true;
-    } else {
-      cIndex += 1;
-      loadQuestions(cIndex);
-    }
-  } else {
-    console.log("Something went wrong with API request");
-  }
-}
-
-//for some reason
-function fifty_fifty(currentQuestion) {
-  //NEED to uncheck all the answer
-
-  const answerElements = document.querySelectorAll(
-    '.answer-radio input[type="radio"]'
-  );
-  console.log("50/50");
-  incorrect_answers = currentQuestion.incorrect_answers;
-  console.log(incorrect_answers);
-  answerElements.forEach((answerInput, index) => {
-    console.log(answerElements[index].value);
-
-    // if (incorrect_answers.includes(answerElements[index].value)) {
-    //   answerElements[index].disabled = true;
-    // }
-    if (
-      answerElements[index].value == incorrect_answers[0] ||
-      answerElements[index].value == incorrect_answers[2]
-    ) {
-      answerElements[index].disabled = true;
+  fiftyBtn.addEventListener("click", async function () {
+    let response = await fetch(`http://localhost:3000/questions/`);
+    const data = await response.json();
+    const currentQuestion = data[cIndex];
+    if (lifeline > 0) {
+      fifty_fifty(currentQuestion);
+      lifeline -= 1;
     }
   });
-  fiftyBtn.disabled = true;
-}
 
-function shuffle(array) {
-  let currentIndex = array.length,
-    randomIndex;
+  loadQuestions(cIndex);
 
-  // While there remain elements to shuffle.
-  while (currentIndex > 0) {
-    // Pick a remaining element.
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
+  async function checkAnswer(cIndex) {
+    if (document.querySelector("input[name=answer]:checked")) {
+      let chosenAnswer = document.querySelector(
+        "input[name=answer]:checked"
+      ).value;
 
-    // And swap it with the current element.
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex],
-      array[currentIndex],
-    ];
+      let resp = await fetch(`http://localhost:3000/questions/${cIndex + 1}`);
+
+      if (resp.ok) {
+        const data = await resp.json();
+
+        if (chosenAnswer == data.correct_answer) {
+          console.log("Correct Answer");
+          score += 1;
+        } else {
+          console.log("Wrong Answer");
+        }
+        isLastQuestion();
+      }
+    } else {
+      console.log("unchecked");
+      alert("NO ANSWER SELECTED! PLEASE SELECT AN ANSWER!");
+    }
   }
 
-  return array;
-}
+  async function isLastQuestion() {
+    let resp = await fetch(`http://localhost:3000/questions`);
+    if (resp.ok) {
+      const data = await resp.json();
+      if (cIndex == data.length - 1) {
+        //MAKE SOMETHING SAYING THAT WAS THE LAST QUESTION OR JUST SHOW SCORES
+        console.log(`THE END! Your score is ${score}/15`);
+        submitBtn.disabled = true;
+      } else {
+        cIndex += 1;
+        loadQuestions(cIndex);
+      }
+    } else {
+      console.log("Something went wrong with API request");
+    }
+  }
+  function fifty_fifty(currentQuestion) {
+    //NEED to uncheck all the answer
+
+    const answerElements = document.querySelectorAll(
+      '.answer-radio input[type="radio"]'
+    );
+    console.log("50/50");
+    incorrect_answers = currentQuestion.incorrect_answers;
+    console.log(incorrect_answers);
+    answerElements.forEach((answerInput, index) => {
+      console.log(answerElements[index].value);
+
+      // if (incorrect_answers.includes(answerElements[index].value)) {
+      //   answerElements[index].disabled = true;
+      // }
+      if (
+        answerElements[index].value == incorrect_answers[0] ||
+        answerElements[index].value == incorrect_answers[2]
+      ) {
+        answerElements[index].disabled = true;
+      }
+    });
+    fiftyBtn.disabled = true;
+  }
+
+  function shuffle(array) {
+    let currentIndex = array.length,
+      randomIndex;
+
+    // While there remain elements to shuffle.
+    while (currentIndex > 0) {
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
+    }
+
+    return array;
+  }
+});
+module.exports = { loadQuestions, displayQuestions };

@@ -5,11 +5,7 @@
     "difficulty": "medium",
     "question": "On a London Underground map, what colour is the Circle Line?",
     "correct_answer": "Yellow",
-    "incorrect_answers": [
-      "Red",
-      "Blue",
-      "Green"
-    ],
+    "incorrect_answers": ["Red", "Blue", "Green"],
     "id": 1
   },
   {
@@ -18,11 +14,7 @@
     "difficulty": "hard",
     "question": "Which country is completely landlocked by South Africa?",
     "correct_answer": "Lesotho",
-    "incorrect_answers": [
-      "Swaziland",
-      "Botswana",
-      "Zimbabwe"
-    ],
+    "incorrect_answers": ["Swaziland", "Botswana", "Zimbabwe"],
     "id": 2
   },
   {
@@ -31,11 +23,7 @@
     "difficulty": "easy",
     "question": "What is the capital of Denmark?",
     "correct_answer": "Copenhagen",
-    "incorrect_answers": [
-      "Aarhus",
-      "Odense",
-      "Aalborg"
-    ],
+    "incorrect_answers": ["Aarhus", "Odense", "Aalborg"],
     "id": 3
   },
   {
@@ -57,11 +45,7 @@
     "difficulty": "medium",
     "question": "The historical city Timbuktu is located in which West African country?",
     "correct_answer": "Mali",
-    "incorrect_answers": [
-      "Senegal",
-      "Niger",
-      "Burkina Faso"
-    ],
+    "incorrect_answers": ["Senegal", "Niger", "Burkina Faso"],
     "id": 5
   },
   {
@@ -70,11 +54,7 @@
     "difficulty": "medium",
     "question": "Which Canadian province has Charlottetown as its capital?",
     "correct_answer": "Prince Edward Island",
-    "incorrect_answers": [
-      "Saskachewan",
-      "Northwest Terrirories",
-      "Ontario"
-    ],
+    "incorrect_answers": ["Saskachewan", "Northwest Terrirories", "Ontario"],
     "id": 6
   },
   {
@@ -109,11 +89,7 @@
     "difficulty": "hard",
     "question": "What is the name of the formerly rich fishing grounds off the island of Newfoundland, Canada?",
     "correct_answer": "Grand Banks",
-    "incorrect_answers": [
-      "Great Barrier Reef",
-      "Mariana Trench",
-      "Hudson Bay"
-    ],
+    "incorrect_answers": ["Great Barrier Reef", "Mariana Trench", "Hudson Bay"],
     "id": 9
   },
   {
@@ -122,24 +98,16 @@
     "difficulty": "medium",
     "question": "What is the capital of Seychelles?",
     "correct_answer": "Victoria",
-    "incorrect_answers": [
-      "Luanda",
-      "N&#039;Djamena",
-      "Tripoli"
-    ],
+    "incorrect_answers": ["Luanda", "N'Djamena", "Tripoli"],
     "id": 10
   },
   {
     "category": "Geography",
     "type": "multiple",
     "difficulty": "medium",
-    "question": "What&#039;s the first National Park designated in the United States?",
+    "question": "What's the first National Park designated in the United States?",
     "correct_answer": "Yellowstone",
-    "incorrect_answers": [
-      "Sequoia ",
-      "Yosemite",
-      "Rocky Mountain"
-    ],
+    "incorrect_answers": ["Sequoia ", "Yosemite", "Rocky Mountain"],
     "id": 11
   },
   {
@@ -148,11 +116,7 @@
     "difficulty": "medium",
     "question": "What is the name of the only remaining Grand Duchy in the world ?",
     "correct_answer": "Luxembourg",
-    "incorrect_answers": [
-      "Montenegro",
-      "Liechtenstein",
-      "Andorra"
-    ],
+    "incorrect_answers": ["Montenegro", "Liechtenstein", "Andorra"],
     "id": 12
   },
   {
@@ -174,11 +138,7 @@
     "difficulty": "medium",
     "question": "What is the capital of Greenland?",
     "correct_answer": "Nuuk",
-    "incorrect_answers": [
-      "Sisimiut",
-      "Narsaq",
-      "Maniitsoq"
-    ],
+    "incorrect_answers": ["Sisimiut", "Narsaq", "Maniitsoq"],
     "id": 14
   },
   {
@@ -187,11 +147,7 @@
     "difficulty": "medium",
     "question": "How many states are in Australia?",
     "correct_answer": "6",
-    "incorrect_answers": [
-      "7",
-      "8",
-      "5"
-    ],
+    "incorrect_answers": ["7", "8", "5"],
     "id": 15
   }
 ]
