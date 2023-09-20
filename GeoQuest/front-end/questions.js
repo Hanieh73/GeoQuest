@@ -1,8 +1,24 @@
 const submitBtn = document.querySelector("#submit-button");
+const fiftyBtn = document.querySelector("#fifty-fifty");
+
 let cIndex = 0;
+let score = 0;
+let lifeline = 3;
+
 submitBtn.addEventListener("click", function () {
   checkAnswer(cIndex);
 });
+
+fiftyBtn.addEventListener("click", async function () {
+  let response = await fetch(`http://localhost:3000/questions/`);
+  const data = await response.json();
+  const currentQuestion = data[cIndex];
+  if (lifeline > 0) {
+    fifty_fifty(currentQuestion);
+    lifeline -= 1;
+  }
+});
+
 loadQuestions(cIndex);
 
 async function loadQuestions(currentQuestionIndex) {
@@ -59,25 +75,30 @@ function displayQuestions(questions, currentQuestionIndex) {
     // console.log(choices[index]);
   });
 
+  if (lifeline > 0) {
+    fiftyBtn.disabled = false;
+  } else {
+    fiftyBtn.dispatchEvent = true;
+  }
+
   submitButton.disabled = false;
   resultElement.textContent = "";
 }
 
 async function checkAnswer(cIndex) {
-  console.log("buenos dias");
   if (document.querySelector("input[name=answer]:checked")) {
-    console.log("checked");
     let chosenAnswer = document.querySelector(
       "input[name=answer]:checked"
     ).value;
-    console.log(chosenAnswer);
+
     let resp = await fetch(`http://localhost:3000/questions/${cIndex + 1}`);
-    //console.log(resp);
+
     if (resp.ok) {
       const data = await resp.json();
-      console.log(data, data.correct_answer);
+
       if (chosenAnswer == data.correct_answer) {
         console.log("Correct Answer");
+        score += 1;
       } else {
         console.log("Wrong Answer");
       }
@@ -95,7 +116,8 @@ async function isLastQuestion() {
     const data = await resp.json();
     if (cIndex == data.length - 1) {
       //MAKE SOMETHING SAYING THAT WAS THE LAST QUESTION OR JUST SHOW SCORES
-      console.log("THE END");
+      console.log(`THE END! Your score is ${score}/15`);
+      submitBtn.disabled = true;
     } else {
       cIndex += 1;
       loadQuestions(cIndex);
@@ -106,3 +128,27 @@ async function isLastQuestion() {
 }
 
 //for some reason
+function fifty_fifty(currentQuestion) {
+  //NEED to uncheck all the answer
+
+  const answerElements = document.querySelectorAll(
+    '.answer-radio input[type="radio"]'
+  );
+  console.log("50/50");
+  incorrect_answers = currentQuestion.incorrect_answers;
+  console.log(incorrect_answers);
+  answerElements.forEach((answerInput, index) => {
+    console.log(answerElements[index].value);
+
+    // if (incorrect_answers.includes(answerElements[index].value)) {
+    //   answerElements[index].disabled = true;
+    // }
+    if (
+      answerElements[index].value == incorrect_answers[0] ||
+      answerElements[index].value == incorrect_answers[2]
+    ) {
+      answerElements[index].disabled = true;
+    }
+  });
+  fiftyBtn.disabled = true;
+}
