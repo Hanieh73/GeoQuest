@@ -1,7 +1,4 @@
-const submitBtn = document.querySelector("#submit-button");
-
 async function loadQuestions(currentQuestionIndex) {
-  console.log(cIndex);
   try {
     //const response = await fetch("../back-end/questions.json");
     let response = await fetch(`http://localhost:3000/questions/`);
@@ -51,59 +48,72 @@ function displayQuestions(questions, currentQuestionIndex) {
     </label>`;
     // console.log(choices[index]);
   });
-
-  submitButton.disabled = false;
-  resultElement.textContent = "";
+  if (resultElement) {
+    // Checking if resultElement exists before setting textContent
+    submitButton.disabled = false;
+    resultElement.textContent = "";
+  }
 }
 
-async function checkAnswer(currentQuestionIndex) {
-  if (document.querySelector("input[name=answer]:checked")) {
-    console.log("checked");
-    let chosenAnswer = document.querySelector(
-      "input[name=answer]:checked"
-    ).value;
-    console.log(chosenAnswer);
-    let resp = await fetch(`http://localhost:3000/questions/${cIndex + 1}`);
-    //console.log(resp);
+document.addEventListener("DOMContentLoaded", () => {
+  const submitBtn = document.querySelector("#submit-button");
+
+  async function checkAnswer(currentQuestionIndex) {
+    if (document.querySelector("input[name=answer]:checked")) {
+      console.log("checked");
+      let chosenAnswer = document.querySelector(
+        "input[name=answer]:checked"
+      ).value;
+      console.log(chosenAnswer);
+      let resp = await fetch(`http://localhost:3000/questions/${cIndex + 1}`);
+      //console.log(resp);
+      if (resp.ok) {
+        const data = await resp.json();
+        console.log(data, data.correct_answer);
+        if (chosenAnswer == data.correct_answer) {
+          //run function that tells them its the correct answer
+          //and displays the next question
+          // setTimeout(displayQuestions(,currentQuestionIndex + 1),5000);
+          console.log("Correct Answer");
+          isLastQuestion();
+        } else {
+          console.log("Wrong Answer");
+          cIndex += 1;
+          loadQuestions(cIndex);
+        }
+      }
+    } else {
+      console.log("unchecked");
+      alert("NO ANSWER SELECTED! PLEASE SELECT AN ANSWER!");
+    }
+  }
+
+  // loadQuestions();
+  async function isLastQuestion() {
+    let resp = await fetch(`http://localhost:3000/questions`);
     if (resp.ok) {
       const data = await resp.json();
-      console.log(data, data.correct_answer);
-      if (chosenAnswer == data.correct_answer) {
-        //run function that tells them its the correct answer
-        //and displays the next question
-        // setTimeout(displayQuestions(,currentQuestionIndex + 1),5000);
-        console.log("Correct Answer");
-        isLastQuestion();
+      if (cIndex == data.length - 1) {
+        //MAKE SOMETHING SAYING THAT WAS THE LAST QUESTION OR JUST SHOW SCORES
+        console.log("THE END");
       } else {
-        console.log("Wrong Answer");
         cIndex += 1;
         loadQuestions(cIndex);
       }
-    }
-  } else {
-    console.log("unchecked");
-    alert("NO ANSWER SELECTED! PLEASE SELECT AN ANSWER!");
-  }
-}
-
-// loadQuestions();
-async function isLastQuestion() {
-  let resp = await fetch(`http://localhost:3000/questions`);
-  if (resp.ok) {
-    const data = await resp.json();
-    if (cIndex == data.length - 1) {
-      //MAKE SOMETHING SAYING THAT WAS THE LAST QUESTION OR JUST SHOW SCORES
-      console.log("THE END");
     } else {
-      cIndex += 1;
-      loadQuestions(cIndex);
+      console.log("Something went wrong with API request");
     }
-  } else {
-    console.log("Something went wrong with API request");
   }
-}
-let cIndex = 0;
-submitBtn.addEventListener("click", checkAnswer(cIndex));
-loadQuestions(cIndex);
+  let cIndex = 0;
 
-//for some reason
+  // submitBtn.addEventListener("click", checkAnswer(cIndex));
+
+  // changed the event handler from above to the below
+  submitBtn.addEventListener("click", () => {
+    checkAnswer(cIndex);
+  });
+
+  loadQuestions(cIndex);
+});
+
+module.exports = { loadQuestions, displayQuestions };
