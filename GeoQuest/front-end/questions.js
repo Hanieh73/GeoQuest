@@ -1,18 +1,23 @@
 const submitBtn = document.querySelector("#submit-button");
+let cIndex = 0;
+submitBtn.addEventListener("click", function () {
+  checkAnswer(cIndex);
+});
+loadQuestions(cIndex);
 
 async function loadQuestions(currentQuestionIndex) {
-  console.log(cIndex);
+  // console.log(cIndex);
   try {
     //const response = await fetch("../back-end/questions.json");
     let response = await fetch(`http://localhost:3000/questions/`);
-
+    console.log(response);
     if (!response.ok) {
       throw new Error("Failed to fetch questions!");
     }
 
     const data = await response.json();
-
-    displayQuestions(data, cIndex);
+    console.log(data);
+    displayQuestions(data, currentQuestionIndex);
   } catch (error) {
     console.error("Error loading questions:", error);
     return [];
@@ -27,6 +32,8 @@ function displayQuestions(questions, currentQuestionIndex) {
   );
   const submitButton = document.getElementById("submit-button");
   const resultElement = document.getElementById("result");
+
+  console.log(currentQuestion);
 
   questionElement.textContent = `Question ${currentQuestionIndex + 1} : ${
     currentQuestion.question
@@ -56,7 +63,8 @@ function displayQuestions(questions, currentQuestionIndex) {
   resultElement.textContent = "";
 }
 
-async function checkAnswer(currentQuestionIndex) {
+async function checkAnswer(cIndex) {
+  console.log("buenos dias");
   if (document.querySelector("input[name=answer]:checked")) {
     console.log("checked");
     let chosenAnswer = document.querySelector(
@@ -69,16 +77,11 @@ async function checkAnswer(currentQuestionIndex) {
       const data = await resp.json();
       console.log(data, data.correct_answer);
       if (chosenAnswer == data.correct_answer) {
-        //run function that tells them its the correct answer
-        //and displays the next question
-        // setTimeout(displayQuestions(,currentQuestionIndex + 1),5000);
         console.log("Correct Answer");
-        isLastQuestion();
       } else {
         console.log("Wrong Answer");
-        cIndex += 1;
-        loadQuestions(cIndex);
       }
+      isLastQuestion();
     }
   } else {
     console.log("unchecked");
@@ -86,7 +89,6 @@ async function checkAnswer(currentQuestionIndex) {
   }
 }
 
-// loadQuestions();
 async function isLastQuestion() {
   let resp = await fetch(`http://localhost:3000/questions`);
   if (resp.ok) {
@@ -102,8 +104,5 @@ async function isLastQuestion() {
     console.log("Something went wrong with API request");
   }
 }
-let cIndex = 0;
-submitBtn.addEventListener("click", checkAnswer(cIndex));
-loadQuestions(cIndex);
 
 //for some reason

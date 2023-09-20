@@ -23,6 +23,6 @@ if (page == "start") {
 //event listener on form not button
 //got rid of the method="POST". the e.preventDefault was the issue
 
-document.addEventListener("dblclick", () => {
-  console.log(testName);
-});
+// document.addEventListener("dblclick", () => {
+//   console.log(testName);
+// });
