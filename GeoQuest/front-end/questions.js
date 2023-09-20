@@ -40,50 +40,50 @@ async function loadQuestions(currentQuestionIndex) {
   }
 }
 
-function displayQuestions(questions, currentQuestionIndex) {
-  const currentQuestion = questions[currentQuestionIndex];
-  const questionElement = document.getElementById("question");
-  const answerElements = document.querySelectorAll(
-    '.answer-radio input[type="radio"]'
-  );
-  const submitButton = document.getElementById("submit-button");
-  const resultElement = document.getElementById("result");
+// function displayQuestions(questions, currentQuestionIndex) {
+//   const currentQuestion = questions[currentQuestionIndex];
+//   const questionElement = document.getElementById("question");
+//   const answerElements = document.querySelectorAll(
+//     '.answer-radio input[type="radio"]'
+//   );
+//   const submitButton = document.getElementById("submit-button");
+//   const resultElement = document.getElementById("result");
 
-  console.log(currentQuestion);
+//   console.log(currentQuestion);
 
-  questionElement.textContent = `Question ${currentQuestionIndex + 1} : ${
-    currentQuestion.question
-  }`;
+//   questionElement.textContent = `Question ${currentQuestionIndex + 1} : ${
+//     currentQuestion.question
+//   }`;
 
-  // Clear any previous selections
-  answerElements.forEach((answerInput) => {
-    answerInput.checked = false;
-  });
+//   // Clear any previous selections
+//   answerElements.forEach((answerInput) => {
+//     answerInput.checked = false;
+//   });
 
-  const choices = [
-    currentQuestion.correct_answer,
-    ...currentQuestion.incorrect_answers,
-  ];
+//   const choices = [
+//     currentQuestion.correct_answer,
+//     ...currentQuestion.incorrect_answers,
+//   ];
 
-  let answerArr = ["answerA", "answerB", "answerC", "answerD"];
-  const answerDiv = document.querySelector("#answer-container");
-  answerDiv.innerHTML = "";
-  answerElements.forEach((answerInput, index) => {
-    answerDiv.innerHTML += `<label for="${answerArr[index]}" class="answer-radio">
-       <input type="radio" id="${answerArr[index]}" name="answer" value="${choices[index]}" /> ${choices[index]}
-    </label>`;
-    // console.log(choices[index]);
-  });
+//   let answerArr = ["answerA", "answerB", "answerC", "answerD"];
+//   const answerDiv = document.querySelector("#answer-container");
+//   answerDiv.innerHTML = "";
+//   answerElements.forEach((answerInput, index) => {
+//     answerDiv.innerHTML += `<label for="${answerArr[index]}" class="answer-radio">
+//        <input type="radio" id="${answerArr[index]}" name="answer" value="${choices[index]}" /> ${choices[index]}
+//     </label>`;
+//     // console.log(choices[index]);
+//   });
 
-  if (lifeline > 0) {
-    fiftyBtn.disabled = false;
-  } else {
-    fiftyBtn.dispatchEvent = true;
-  }
+//   if (lifeline > 0) {
+//     fiftyBtn.disabled = false;
+//   } else {
+//     fiftyBtn.dispatchEvent = true;
+//   }
 
-  submitButton.disabled = false;
-  resultElement.textContent = "";
-}
+//   submitButton.disabled = false;
+//   resultElement.textContent = "";
+// }
 
 async function checkAnswer(cIndex) {
   if (document.querySelector("input[name=answer]:checked")) {
@@ -152,3 +152,75 @@ function fifty_fifty(currentQuestion) {
   });
   fiftyBtn.disabled = true;
 }
+
+function displayQuestions(questions, currentQuestionIndex) {
+  const currentQuestion = questions[currentQuestionIndex];
+  const questionElement = document.getElementById("question");
+  const answerElements = document.querySelectorAll(
+    '.answer-radio input[type="radio"]'
+  );
+  const submitButton = document.getElementById("submit-button");
+  const resultElement = document.getElementById("result");
+
+  console.log(currentQuestion);
+
+  questionElement.textContent = `Question ${currentQuestionIndex + 1} : ${
+    currentQuestion.question
+  }`;
+
+  // Clear any previous selections
+  answerElements.forEach((answerInput) => {
+    answerInput.checked = false;
+  });
+
+  const choices = [
+    currentQuestion.correct_answer,
+    ...currentQuestion.incorrect_answers,
+  ];
+
+  let answerArr = ["answerA", "answerB", "answerC", "answerD"];
+  const answerDiv = document.querySelector("#answer-container");
+  answerDiv.innerHTML = "";
+  answerDivArr = [];
+  answerElements.forEach((answerInput, index) => {
+    answerDivArr.push(`<label for="${answerArr[index]}" class="answer-radio">
+       <input type="radio" id="${answerArr[index]}" name="answer" value="${choices[index]}" /> ${choices[index]}
+    </label>`);
+    // console.log(choices[index]);
+  });
+
+  shuffledArr = shuffle(answerDivArr);
+  shuffledArr.forEach((answerInput, index) => {
+    answerDiv.innerHTML += shuffledArr[index];
+  });
+
+  if (lifeline > 0) {
+    fiftyBtn.disabled = false;
+  } else {
+    fiftyBtn.dispatchEvent = true;
+  }
+
+  submitButton.disabled = false;
+  resultElement.textContent = "";
+}
+
+function shuffle(array) {
+  let currentIndex = array.length,
+    randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex > 0) {
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+
+  return array;
+}
+console.log(shuffle([1, 2, 3, 4, 5, 6]));
