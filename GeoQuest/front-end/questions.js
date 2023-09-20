@@ -17,6 +17,27 @@ async function loadQuestions(currentQuestionIndex) {
   }
 }
 
+//shuffle function was moved to here to be defined before it could be called
+function shuffle(array) {
+  let currentIndex = array.length,
+    randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex > 0) {
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+
+  return array;
+}
+
 //Nadim's display function
 
 function displayQuestions(questions, currentQuestionIndex) {
@@ -47,7 +68,10 @@ function displayQuestions(questions, currentQuestionIndex) {
   let answerArr = ["answerA", "answerB", "answerC", "answerD"];
   const answerDiv = document.querySelector("#answer-container");
   answerDiv.innerHTML = "";
-  answerDivArr = [];
+
+  //added let to the below line, it was missing the variable declaration
+
+  let answerDivArr = [];
   answerElements.forEach((answerInput, index) => {
     answerDivArr.push(`<label for="${answerArr[index]}" class="answer-radio">
        <input type="radio" id="${answerArr[index]}" name="answer" value="${choices[index]}" /> ${choices[index]}
@@ -78,16 +102,29 @@ document.addEventListener("DOMContentLoaded", () => {
   let score = 0;
   let lifeline = 3;
 
+  // Function to update the lifeline status
+  function updateLifeline() {
+    if (lifeline > 0) {
+      fiftyBtn.disabled = false;
+    } else {
+      fiftyBtn.disabled = true;
+    }
+  }
+  //added above
+
   submitBtn.addEventListener("click", function () {
     checkAnswer(cIndex);
   });
 
   fiftyBtn.addEventListener("click", async function () {
-    let response = await fetch(`http://localhost:3000/questions/`);
+    //changed it from `http://localhost:3000` to the json file since the url might not work if the application is hosted elsewhere and trying to access a local development server.It's working as intended now
+    let response = await fetch("../back-end/questions.json");
     const data = await response.json();
     const currentQuestion = data[cIndex];
     if (lifeline > 0) {
       fifty_fifty(currentQuestion);
+      //re-enabling the button after using the lifeline once- now works correctly
+      updateLifeline();
       lifeline -= 1;
     }
   });
@@ -158,26 +195,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
     fiftyBtn.disabled = true;
-  }
-
-  function shuffle(array) {
-    let currentIndex = array.length,
-      randomIndex;
-
-    // While there remain elements to shuffle.
-    while (currentIndex > 0) {
-      // Pick a remaining element.
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-
-      // And swap it with the current element.
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex],
-        array[currentIndex],
-      ];
-    }
-
-    return array;
   }
 });
 module.exports = { loadQuestions, displayQuestions };
