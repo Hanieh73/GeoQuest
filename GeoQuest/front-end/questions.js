@@ -1,20 +1,23 @@
 async function loadQuestions(currentQuestionIndex) {
+  // console.log(cIndex);
   try {
     //const response = await fetch("../back-end/questions.json");
     let response = await fetch(`http://localhost:3000/questions/`);
-
+    console.log(response);
     if (!response.ok) {
       throw new Error("Failed to fetch questions!");
     }
 
     const data = await response.json();
 
-    displayQuestions(data, cIndex);
+    displayQuestions(data, currentQuestionIndex);
   } catch (error) {
     console.error("Error loading questions:", error);
     return [];
   }
 }
+
+//Nadim's display function
 
 function displayQuestions(questions, currentQuestionIndex) {
   const currentQuestion = questions[currentQuestionIndex];
@@ -24,6 +27,8 @@ function displayQuestions(questions, currentQuestionIndex) {
   );
   const submitButton = document.getElementById("submit-button");
   const resultElement = document.getElementById("result");
+
+  console.log(currentQuestion);
 
   questionElement.textContent = `Question ${currentQuestionIndex + 1} : ${
     currentQuestion.question
@@ -42,45 +47,71 @@ function displayQuestions(questions, currentQuestionIndex) {
   let answerArr = ["answerA", "answerB", "answerC", "answerD"];
   const answerDiv = document.querySelector("#answer-container");
   answerDiv.innerHTML = "";
+  answerDivArr = [];
   answerElements.forEach((answerInput, index) => {
-    answerDiv.innerHTML += `<label for="${answerArr[index]}" class="answer-radio">
+    answerDivArr.push(`<label for="${answerArr[index]}" class="answer-radio">
        <input type="radio" id="${answerArr[index]}" name="answer" value="${choices[index]}" /> ${choices[index]}
-    </label>`;
+    </label>`);
     // console.log(choices[index]);
   });
-  if (resultElement) {
-    // Checking if resultElement exists before setting textContent
-    submitButton.disabled = false;
-    resultElement.textContent = "";
+
+  shuffledArr = shuffle(answerDivArr);
+  shuffledArr.forEach((answerInput, index) => {
+    answerDiv.innerHTML += shuffledArr[index];
+  });
+
+  if (lifeline > 0) {
+    fiftyBtn.disabled = false;
+  } else {
+    fiftyBtn.dispatchEvent = true;
   }
+
+  submitButton.disabled = false;
+  resultElement.textContent = "";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   const submitBtn = document.querySelector("#submit-button");
+  const fiftyBtn = document.querySelector("#fifty-fifty");
 
-  async function checkAnswer(currentQuestionIndex) {
+  let cIndex = 0;
+  let score = 0;
+  let lifeline = 3;
+
+  submitBtn.addEventListener("click", function () {
+    checkAnswer(cIndex);
+  });
+
+  fiftyBtn.addEventListener("click", async function () {
+    let response = await fetch(`http://localhost:3000/questions/`);
+    const data = await response.json();
+    const currentQuestion = data[cIndex];
+    if (lifeline > 0) {
+      fifty_fifty(currentQuestion);
+      lifeline -= 1;
+    }
+  });
+
+  loadQuestions(cIndex);
+
+  async function checkAnswer(cIndex) {
     if (document.querySelector("input[name=answer]:checked")) {
-      console.log("checked");
       let chosenAnswer = document.querySelector(
         "input[name=answer]:checked"
       ).value;
-      console.log(chosenAnswer);
+
       let resp = await fetch(`http://localhost:3000/questions/${cIndex + 1}`);
-      //console.log(resp);
+
       if (resp.ok) {
         const data = await resp.json();
-        console.log(data, data.correct_answer);
+
         if (chosenAnswer == data.correct_answer) {
-          //run function that tells them its the correct answer
-          //and displays the next question
-          // setTimeout(displayQuestions(,currentQuestionIndex + 1),5000);
           console.log("Correct Answer");
-          isLastQuestion();
+          score += 1;
         } else {
           console.log("Wrong Answer");
-          cIndex += 1;
-          loadQuestions(cIndex);
         }
+        isLastQuestion();
       }
     } else {
       console.log("unchecked");
@@ -88,14 +119,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // loadQuestions();
   async function isLastQuestion() {
     let resp = await fetch(`http://localhost:3000/questions`);
     if (resp.ok) {
       const data = await resp.json();
       if (cIndex == data.length - 1) {
         //MAKE SOMETHING SAYING THAT WAS THE LAST QUESTION OR JUST SHOW SCORES
-        console.log("THE END");
+        console.log(`THE END! Your score is ${score}/15`);
+        submitBtn.disabled = true;
       } else {
         cIndex += 1;
         loadQuestions(cIndex);
@@ -104,16 +135,49 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("Something went wrong with API request");
     }
   }
-  let cIndex = 0;
+  function fifty_fifty(currentQuestion) {
+    //NEED to uncheck all the answer
 
-  // submitBtn.addEventListener("click", checkAnswer(cIndex));
+    const answerElements = document.querySelectorAll(
+      '.answer-radio input[type="radio"]'
+    );
+    console.log("50/50");
+    incorrect_answers = currentQuestion.incorrect_answers;
+    console.log(incorrect_answers);
+    answerElements.forEach((answerInput, index) => {
+      console.log(answerElements[index].value);
 
-  // changed the event handler from above to the below
-  submitBtn.addEventListener("click", () => {
-    checkAnswer(cIndex);
-  });
+      // if (incorrect_answers.includes(answerElements[index].value)) {
+      //   answerElements[index].disabled = true;
+      // }
+      if (
+        answerElements[index].value == incorrect_answers[0] ||
+        answerElements[index].value == incorrect_answers[2]
+      ) {
+        answerElements[index].disabled = true;
+      }
+    });
+    fiftyBtn.disabled = true;
+  }
 
-  loadQuestions(cIndex);
+  function shuffle(array) {
+    let currentIndex = array.length,
+      randomIndex;
+
+    // While there remain elements to shuffle.
+    while (currentIndex > 0) {
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
+    }
+
+    return array;
+  }
 });
-
 module.exports = { loadQuestions, displayQuestions };
