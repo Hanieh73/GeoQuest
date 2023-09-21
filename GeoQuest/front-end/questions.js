@@ -1,34 +1,36 @@
-async function loadQuestions(currentQuestionIndex) {
-  // console.log(cIndex);
+let lifeline = 3;
+let cIndex = 0;
+let fiftyBtn;
+let questionsData = [];
+
+const loadQuestions = async () => {
   try {
-    //const response = await fetch("../back-end/questions.json");
-    let response = await fetch(`http://localhost:3000/questions/`);
-    console.log(response);
+    const response = await fetch("http://localhost:3000/questions/");
     if (!response.ok) {
-      throw new Error("Failed to fetch questions!");
+      console.error("Error loading questions:", response.statusText);
+      return [];
     }
-
     const data = await response.json();
-
-    displayQuestions(data, currentQuestionIndex);
+    if (Array.isArray(data) && data.length > 0) {
+      return data;
+    } else {
+      console.error("Error loading questions: Invalid data format");
+      return [];
+    }
   } catch (error) {
-    console.error("Error loading questions:", error);
+    console.error("Error loading questions:", error.message);
     return [];
   }
-}
+};
 
-//shuffle function was moved to here to be defined before it could be called
 function shuffle(array) {
   let currentIndex = array.length,
     randomIndex;
 
-  // While there remain elements to shuffle.
   while (currentIndex > 0) {
-    // Pick a remaining element.
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex--;
 
-    // And swap it with the current element.
     [array[currentIndex], array[randomIndex]] = [
       array[randomIndex],
       array[currentIndex],
@@ -38,10 +40,8 @@ function shuffle(array) {
   return array;
 }
 
-//Nadim's display function
-
-function displayQuestions(questions, currentQuestionIndex) {
-  const currentQuestion = questions[currentQuestionIndex];
+function displayQuestions(questions) {
+  const currentQuestion = questions[cIndex];
   const questionElement = document.getElementById("question");
   const answerElements = document.querySelectorAll(
     '.answer-radio input[type="radio"]'
@@ -49,13 +49,10 @@ function displayQuestions(questions, currentQuestionIndex) {
   const submitButton = document.getElementById("submit-button");
   const resultElement = document.getElementById("result");
 
-  console.log(currentQuestion);
-
-  questionElement.textContent = `Question ${currentQuestionIndex + 1} : ${
+  questionElement.textContent = `Question ${cIndex + 1}: ${
     currentQuestion.question
   }`;
 
-  // Clear any previous selections
   answerElements.forEach((answerInput) => {
     answerInput.checked = false;
   });
@@ -65,21 +62,18 @@ function displayQuestions(questions, currentQuestionIndex) {
     ...currentQuestion.incorrect_answers,
   ];
 
-  let answerArr = ["answerA", "answerB", "answerC", "answerD"];
+  const answerArr = ["answerA", "answerB", "answerC", "answerD"];
   const answerDiv = document.querySelector("#answer-container");
   answerDiv.innerHTML = "";
 
-  //added let to the below line, it was missing the variable declaration
-
-  let answerDivArr = [];
+  const answerDivArr = [];
   answerElements.forEach((answerInput, index) => {
     answerDivArr.push(`<label for="${answerArr[index]}" class="answer-radio">
-       <input type="radio" id="${answerArr[index]}" name="answer" value="${choices[index]}" /> ${choices[index]}
+      <input type="radio" id="${answerArr[index]}" name="answer" value="${choices[index]}" /> ${choices[index]}
     </label>`);
-    // console.log(choices[index]);
   });
 
-  shuffledArr = shuffle(answerDivArr);
+  const shuffledArr = shuffle(answerDivArr);
   shuffledArr.forEach((answerInput, index) => {
     answerDiv.innerHTML += shuffledArr[index];
   });
@@ -87,51 +81,54 @@ function displayQuestions(questions, currentQuestionIndex) {
   if (lifeline > 0) {
     fiftyBtn.disabled = false;
   } else {
-    fiftyBtn.dispatchEvent = true;
+    fiftyBtn.disabled = true;
   }
 
   submitButton.disabled = false;
   resultElement.textContent = "";
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const submitBtn = document.querySelector("#submit-button");
-  const fiftyBtn = document.querySelector("#fifty-fifty");
+function fifty_fifty() {
+  const answerElements = document.querySelectorAll(
+    '.answer-radio input[type="radio"]'
+  );
 
-  let cIndex = 0;
-  let score = 0;
-  let lifeline = 3;
-
-  // Function to update the lifeline status
-  function updateLifeline() {
-    if (lifeline > 0) {
-      fiftyBtn.disabled = false;
-    } else {
-      fiftyBtn.disabled = true;
-    }
-  }
-  //added above
-
-  submitBtn.addEventListener("click", function () {
-    checkAnswer(cIndex);
+  const shuffledAnswers = Array.from(answerElements).filter((_, index) => {
+    return index % 2 === 0; // Keep every other answer (2nd and 4th answers)
   });
 
-  fiftyBtn.addEventListener("click", async function () {
-    //changed it from `http://localhost:3000` to the json file since the url might not work if the application is hosted elsewhere and trying to access a local development server.It's working as intended now
-    let response = await fetch("../back-end/questions.json");
-    const data = await response.json();
-    const currentQuestion = data[cIndex];
+  shuffledAnswers.forEach((answerInput) => {
+    answerInput.disabled = true;
+  });
+
+  fiftyBtn.disabled = true;
+}
+
+async function initializeGame() {
+  questionsData = await loadQuestions();
+  if (questionsData.length > 0) {
+    displayQuestions(questionsData);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const submitBtn = document.querySelector("#submit-button");
+  fiftyBtn = document.querySelector("#fifty-fifty");
+
+  submitBtn.addEventListener("click", function () {
+    checkAnswer();
+  });
+
+  fiftyBtn.addEventListener("click", function () {
     if (lifeline > 0) {
-      fifty_fifty(currentQuestion);
-      //re-enabling the button after using the lifeline once- now works correctly
-      updateLifeline();
+      fifty_fifty();
       lifeline -= 1;
     }
   });
 
-  loadQuestions(cIndex);
+  await initializeGame();
 
-  async function checkAnswer(cIndex) {
+  async function checkAnswer() {
     if (document.querySelector("input[name=answer]:checked")) {
       let chosenAnswer = document.querySelector(
         "input[name=answer]:checked"
@@ -144,7 +141,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (chosenAnswer == data.correct_answer) {
           console.log("Correct Answer");
-          score += 1;
         } else {
           console.log("Wrong Answer");
         }
@@ -157,44 +153,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   async function isLastQuestion() {
-    let resp = await fetch(`http://localhost:3000/questions`);
-    if (resp.ok) {
-      const data = await resp.json();
-      if (cIndex == data.length - 1) {
-        //MAKE SOMETHING SAYING THAT WAS THE LAST QUESTION OR JUST SHOW SCORES
-        console.log(`THE END! Your score is ${score}/15`);
-        submitBtn.disabled = true;
-      } else {
-        cIndex += 1;
-        loadQuestions(cIndex);
-      }
+    if (cIndex === questionsData.length - 1) {
+      console.log(`THE END! Your score is ${lifeline}`);
+      submitBtn.disabled = true;
     } else {
-      console.log("Something went wrong with API request");
+      cIndex += 1;
+      displayQuestions(questionsData);
     }
   }
-  function fifty_fifty(currentQuestion) {
-    //NEED to uncheck all the answer
-
-    const answerElements = document.querySelectorAll(
-      '.answer-radio input[type="radio"]'
-    );
-    console.log("50/50");
-    incorrect_answers = currentQuestion.incorrect_answers;
-    console.log(incorrect_answers);
-    answerElements.forEach((answerInput, index) => {
-      console.log(answerElements[index].value);
-
-      // if (incorrect_answers.includes(answerElements[index].value)) {
-      //   answerElements[index].disabled = true;
-      // }
-      if (
-        answerElements[index].value == incorrect_answers[0] ||
-        answerElements[index].value == incorrect_answers[2]
-      ) {
-        answerElements[index].disabled = true;
-      }
-    });
-    fiftyBtn.disabled = true;
-  }
 });
-module.exports = { loadQuestions, displayQuestions };
+
+module.exports = { loadQuestions, shuffle, displayQuestions, fifty_fifty };
