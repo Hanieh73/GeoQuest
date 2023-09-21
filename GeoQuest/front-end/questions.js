@@ -42,6 +42,12 @@ function shuffle(array) {
 
 function displayQuestions(questions) {
   const currentQuestion = questions[cIndex];
+
+  if (!currentQuestion) {
+    console.error("No question data found.");
+    return;
+  }
+
   const questionElement = document.getElementById("question");
   const answerElements = document.querySelectorAll(
     '.answer-radio input[type="radio"]'
