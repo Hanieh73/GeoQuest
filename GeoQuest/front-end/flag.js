@@ -99,17 +99,6 @@ function checkAnswer(rAnswer, count) {
 	}
 }
 
-//Function To Show result correct and wrong answer
-function showResults(count) {
-	if (currentIndex === count) {
-		flagOptions.innerHTML = "";
-		flagImgDiv.innerHTML = "";
-		scoreDiv.style.display = "block";
-		correctAns.innerHTML = rightAnswer;
-		incorrectAns.innerHTML = count - rightAnswer;
-	}
-}
-
 //To Generate A New Game
 btnNewGame.addEventListener("click", () => {
 	window.location.reload();
@@ -117,22 +106,47 @@ btnNewGame.addEventListener("click", () => {
 
 let timerElement = document.getElementById("timer");
 let timerMessageElement = document.getElementById("timer-message");
-let timeLeft = 5; // Set the initial time (in seconds)
+let timeLeft = 10; // Set the initial time (in seconds)
+
+function showCustomAlert(score, questionCount) {
+	const customAlert = document.getElementById("customAlert");
+	const customAlertScore = document.getElementById("customAlertScore");
+	const customAlertQuestionCount = document.getElementById("customAlertQuestionCount");
+
+	// Set the score and question count in the alert box
+	customAlertScore.textContent = score;
+	customAlertQuestionCount.textContent = questionCount;
+
+	customAlert.style.display = "flex";
+}
+
+function showQuizFinishedAlert(score, questionCount) {
+	const quizFinishedAlert = document.getElementById("quizFinishedAlert");
+	const quizFinishedScore = document.getElementById("quizFinishedScore");
+	const quizFinishedQuestionCount = document.getElementById("quizFinishedQuestionCount");
+
+	// Set the score and question count in the alert box
+	quizFinishedScore.textContent = score;
+	quizFinishedQuestionCount.textContent = questionCount;
+
+	quizFinishedAlert.style.display = "flex";
+}
 
 function startTimer() {
 	function updateTimer() {
+		if (currentIndex === 10) {
+			// Quiz is finished, stop the timer
+			clearInterval(timerInterval);
+			timerMessageElement.textContent = "Quiz Finished!";
+			showQuizFinishedAlert(rightAnswer, currentIndex);
+		}
 		if (timeLeft > 0) {
 			timeLeft--;
 			timerElement.textContent = timeLeft;
 		} else {
-			// Time's up, display a message and reset the timer
+			// Time's up, display my custom alert and reset the quiz
 			clearInterval(timerInterval);
-			timerMessageElement.textContent = "Time's up! Click here to try again.";
-			// You can also add a click event to the message for retrying
-			timerMessageElement.addEventListener("click", () => {
-				// Add any code to retry the game here, for example:
-				window.location.reload(); // Reload the page to start over
-			});
+			showCustomAlert(rightAnswer, currentIndex);
 		}
 	}
 
@@ -140,5 +154,13 @@ function startTimer() {
 	let timerInterval = setInterval(updateTimer, 1000); // Update the timer every 1 second (1000 milliseconds)
 }
 
+const customAlertOKButton = document.getElementById("customAlertOK");
+const quizFinishedAlert = document.getElementById("quizFinishedOk");
+quizFinishedAlert.addEventListener("click", function () {
+	location.reload();
+});
+customAlertOKButton.addEventListener("click", function () {
+	location.reload();
+});
 // Start the timer when the page loads
 window.addEventListener("load", startTimer);
