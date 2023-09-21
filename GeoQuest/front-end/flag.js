@@ -18,10 +18,10 @@ function getQuestions() {
 		if (this.readyState === 4 && this.status === 200) {
 			let questions = JSON.parse(this.responseText);
 			//Number Of Question Each New Game
-			let qCount = 10;
+			let qCount = 20;
 			questionNum(qCount);
 			//Random Question Each New Game
-			questions = questions.sort(() => Math.random() - Math.random()).slice(0, 10);
+			questions = questions.sort(() => Math.random() - Math.random()).slice(0, 20);
 
 			//Add Questions Data
 			addQuestionData(questions[currentIndex], qCount);
@@ -106,7 +106,7 @@ btnNewGame.addEventListener("click", () => {
 
 let timerElement = document.getElementById("timer");
 let timerMessageElement = document.getElementById("timer-message");
-let timeLeft = 10; // Set the initial time (in seconds)
+let timeLeft = 150; // Set the initial time (in seconds)
 
 function showCustomAlert(score, questionCount) {
 	const customAlert = document.getElementById("customAlert");
@@ -134,7 +134,7 @@ function showQuizFinishedAlert(score, questionCount) {
 
 function startTimer() {
 	function updateTimer() {
-		if (currentIndex === 10) {
+		if (currentIndex === 20) {
 			// Quiz is finished, stop the timer
 			clearInterval(timerInterval);
 			timerMessageElement.textContent = "Quiz Finished!";
