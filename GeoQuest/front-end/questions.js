@@ -154,6 +154,7 @@ async function checkAnswer() {
 async function isLastQuestion() {
   if (cIndex === questionsData.length - 1) {
     console.log(`THE END! Your score is ${score}`);
+    const submitBtn = document.querySelector("#submit-button");
     submitBtn.disabled = true;
   } else {
     cIndex += 1;
