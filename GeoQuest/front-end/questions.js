@@ -106,7 +106,7 @@ function fifty_fifty() {
   shuffledAnswers.forEach((answerInput) => {
     answerInput.disabled = true;
   });
-
+  fiftyBtn = document.querySelector("#fifty-fifty");
   fiftyBtn.disabled = true;
 }
 

@@ -221,7 +221,7 @@ describe("fifty_fifty", () => {
           <button id="fifty-fifty">50/50</button>
   `;
     //fiftyBtn undefined
-    const fiftyBtn = document.querySelector("#fifty-fifty");
+    // const fiftyBtn = document.querySelector("#fifty-fifty");
     fifty_fifty();
     const disabledAnswerInputs = document.querySelectorAll(
       ".answer-radio input[disabled]"
