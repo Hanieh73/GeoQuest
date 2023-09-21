@@ -169,4 +169,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
-module.exports = { loadQuestions, shuffle, displayQuestions, fifty_fifty };
+module.exports = {
+  loadQuestions,
+  shuffle,
+  displayQuestions,
+  fifty_fifty,
+};
