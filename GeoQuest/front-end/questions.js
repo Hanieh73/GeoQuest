@@ -175,4 +175,6 @@ module.exports = {
   fifty_fifty,
   checkAnswer,
   fiftyBtn,
+  initializeGame,
+  isLastQuestion,
 };
