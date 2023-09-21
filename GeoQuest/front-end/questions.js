@@ -174,4 +174,5 @@ module.exports = {
   displayQuestions,
   fifty_fifty,
   checkAnswer,
+  fiftyBtn,
 };

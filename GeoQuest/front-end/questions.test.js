@@ -10,6 +10,7 @@ const {
   shuffle,
   fifty_fifty,
   checkAnswer,
+  fiftyBtn,
 } = require("./questions");
 
 const { JSDOM } = require("jsdom");
@@ -196,12 +197,38 @@ describe("shuffle", () => {
   });
 });
 
-describe("fifty_fifty", () => {
+describe("fifty_fifty NADIM VERSION", () => {
   it("is a function", () => {
     expect(fifty_fifty).toBeInstanceOf(Function);
   });
 
-  it("disables the filtered elements", () => {});
+  //   it("disables the filtered elements", () => {
+  //     document.body.innerHTML = `
+  //   <div id="answer-container">
+  //     <label for="answerA" class="answer-radio">
+  //       <input type="radio" id="answerA" name="answer" value="A" /> a) Answer A
+  //     </label>
+  //     <label for="answerB" class="answer-radio">
+  //       <input type="radio" id="answerB" name="answer" value="B" /> b) Answer B
+  //     </label>
+  //     <label for="answerC" class="answer-radio">
+  //       <input type="radio" id="answerC" name="answer" value="C" /> c) Answer C
+  //     </label>
+  //     <label for="answerD" class="answer-radio">
+  //       <input type="radio" id="answerD" name="answer" value="D" /> d) Answer D
+  //     </label>
+  //   </div>
+  //   <button id="submit-button">Submit</button>
+  //         <button id="fifty-fifty">50/50</button>
+  // `;
+  //     //fiftyBtn undefined
+  //     const fiftyBtn = document.querySelector("#fifty-fifty")
+  //     fifty_fifty();
+  //     const disabledAnswerInputs = document.querySelectorAll(
+  //       ".answer-radio input[disabled]"
+  //     );
+  //     expect(disabledAnswerInputs.length).toBe(2);
+  //   });
   it("disables the fifty-fifty button once clicked", () => {});
 });
 
