@@ -1,64 +1,161 @@
-* {
-    margin: 0;
-    box-sizing: border-box;
-}
-
+/* Global Styles */
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    /* text-align: center; */
-    background-color: #f4f4f4;
+  font-family: "Roboto", sans-serif;
+  background-color: #faf3dd;
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
 
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Navbar Styles */
+.navbar {
+  background-color: #c8d5b9;
+}
+
+.navbar a.navbar-brand,
+.navbar a.navbar-brand:hover {
+  color: #292e1e;
+}
+
+.navbar img.d-inline-block {
+  filter: brightness(0) invert(1);
+}
+
+/* Header Styles */
+.game-mode-box {
+  background-color: rgba(200, 213, 185, 0.8);
+  padding: 20px 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.game-mode-header {
+  font-size: 2rem;
+  color: #292e1e;
+  margin: 0;
+}
+
+/* Quiz Container Styles */
 .quiz-container {
-    /* max-width: 600px; */
-    /* margin: 0 auto; */
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-}
-
-h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #c8d5b9;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.2);
 }
 
 #question {
-    font-size: 1.25rem;
-    margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #292e1e;
+  margin-bottom: 20px;
 }
 
 .answer-radio {
-    display: block;
-    margin-bottom: 10px;
+  display: block;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
 }
 
-.answer-block {
-    margin-bottom: 10px;
-    border: 1px solid #0D6EFD;
-    padding: 20px;
-    border-radius: 50px;
-    max-width: 300px;
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
+/* Make the checkbox bigger */
+.answer-radio input[type="radio"] {
+  transform: scale(1.5);
+  margin-right: 10px;
 }
 
-.answer-block:hover {
-    background-color: #0D6EFD;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
+/* Button Styles */
+button {
+  padding: 12px 24px;
+  font-size: 1.5rem;
+  border-radius: 50px;
+  border: 3px solid #292e1e;
+  background-color: #8fc0a9;
+  color: #292e1e;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+  margin-right: 10px;
 }
 
-input {
-    margin-right: 10px;
+button:hover {
+  background-color: #292e1e;
+  color: white;
+  border-color: #292e1e;
 }
 
-#submit-button {
-    margin-top: 20px;
-    margin-bottom: 40px;
-    padding: 10px 20px;
-    background-color: #0D6EFD;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+/* Result Styles */
+#result {
+  font-size: 1.5rem;
+  color: #292e1e;
+  margin-top: 20px;
+}
+
+/* Media Query for Smaller Screens */
+@media (max-width: 768px) {
+  .navbar a.navbar-brand {
+    font-size: 1rem;
+  }
+
+  .game-mode-header {
+    font-size: 1.5rem;
+  }
+
+  .quiz-container {
+    max-width: 100%;
+  }
+
+  /* Modify text size for smaller screens */
+  #question {
+    font-size: 1.2rem;
+  }
+
+  .answer-radio {
+    font-size: 1.4rem;
+  }
+
+  button {
+    font-size: 1.2rem;
+  }
+
+  /* Hide the footer on smaller screens */
+  .footer {
+    display: none;
+  }
+}
+
+.quiz-headline {
+  padding-top: 30px;
+  padding-bottom: 50px;
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #292e1e;
+  color: white;
+  padding: 20px 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Logo and Title Styles */
+.navbar a.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand.custom-logo {
+  margin-right: 30px; /* Keep the same margin as before */
+}
+
+.title {
+  font-size: 2rem;
+  font-family: Roboto, sans-serif;
+  color: #292e1e;
+  font-weight: bold;
+  margin-left: 0; /* Remove margin to prevent unwanted space */
+  margin-right: 0; /* Remove margin to prevent unwanted space */
 }

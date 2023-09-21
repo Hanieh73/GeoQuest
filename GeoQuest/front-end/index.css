@@ -22,7 +22,6 @@ body {
   color: #292e1e; /* Dark text color */
 }
 
-/* Update the color of the brand image */
 .navbar img.d-inline-block {
   filter: brightness(0) invert(1); /* Invert the image color */
 }
@@ -85,7 +84,7 @@ h5 {
   margin-bottom: 40px;
   font-style: italic; /* Italicize the text */
   text-align: center; /* Center-align the text */
-  padding: 10px; /* Add some padding for spacing */
+  padding: 10px;
 }
 
 .question-type {
@@ -177,14 +176,14 @@ h5 {
 }
 
 .welcome-text {
-  font-size: 1.5rem; /* Adjust the font size as needed */
-  color: #555; /* Change the color to a suitable one */
+  font-size: 1.5rem;
+  color: #555;
   font-style: italic; /* Add italic style */
 }
 .title {
-  font-size: 2rem; /* Adjust the font size as needed */
-  color: #292e1e; /* Change the color to your preferred one */
-  font-weight: bold; /* Add font-weight for emphasis */
+  font-size: 2rem;
+  color: #292e1e;
+  font-weight: bold;
 }
 
 /* Updated Button Styles */
@@ -213,6 +212,6 @@ h5 {
 .w-75.border {
   border: 2px solid rgba(200, 213, 185, 0.8); /* Add a translucent border */
   border-radius: 10px; /* Rounded corners */
-  padding: 20px; /* Add padding for spacing */
+  padding: 20px;
   box-shadow: 5px 5px 5px 1px rgba(120, 120, 120, 0.44);
 }
