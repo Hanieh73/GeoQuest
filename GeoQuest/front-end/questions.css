@@ -159,3 +159,30 @@ button:hover {
   margin-left: 0; /* Remove margin to prevent unwanted space */
   margin-right: 0; /* Remove margin to prevent unwanted space */
 }
+/* Media Query for Smaller Screens */
+@media (max-width: 768px) {
+  .navbar a.navbar-brand {
+    font-size: 1rem;
+  }
+
+  .game-mode-header {
+    font-size: 1.5rem;
+  }
+
+  .quiz-container {
+    max-width: 100%;
+  }
+
+  /* Modify question font size for smaller screens */
+  #question {
+    font-size: 1.2rem; /* Adjust the font size as needed */
+  }
+
+  /* Modify footer styles for smaller screens */
+  .footer p {
+    font-size: 0.9rem;
+  }
+}
+#question {
+  font-size: 2rem;
+}
