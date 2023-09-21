@@ -203,6 +203,14 @@ describe("fifty_fifty", () => {
 
   it("disables the filtered elements", () => {
     document.body.innerHTML = `
+    <div class="box">
+        <h3 id="score-count">Score: 0<span></span></h3>
+        <h3 id="lifeline">Lifeline Count: 3</h3>
+        <h3 class="count" id="question-number">Questions: <span></span></h3>
+      </div>
+      <div class="quiz-container">
+        <h1>Game Mode - World Tour</h1>
+        <p id="question">Loading question...</p>
     <div id="answer-container">
       <label for="answerA" class="answer-radio">
         <input type="radio" id="answerA" name="answer" value="A" /> a) Answer A

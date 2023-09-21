@@ -1,6 +1,8 @@
 let lifeline = 3;
+let score = 0;
 let cIndex = 0;
 let fiftyBtn;
+let lifelineEl;
 let questionsData = [];
 
 const loadQuestions = async () => {
@@ -54,6 +56,9 @@ function displayQuestions(questions) {
   );
   const submitButton = document.getElementById("submit-button");
   const resultElement = document.getElementById("result");
+  document.getElementById(
+    "question-number"
+  ).textContent = `Question ${questions.length}`;
 
   questionElement.textContent = `Question ${cIndex + 1}: ${
     currentQuestion.question
@@ -99,6 +104,7 @@ function fifty_fifty() {
     '.answer-radio input[type="radio"]'
   );
 
+  //This line below can disabled the correct answers option
   const shuffledAnswers = Array.from(answerElements).filter((_, index) => {
     return index % 2 === 0; // Keep every other answer (2nd and 4th answers)
   });
@@ -108,6 +114,8 @@ function fifty_fifty() {
   });
   fiftyBtn = document.querySelector("#fifty-fifty");
   fiftyBtn.disabled = true;
+  lifelineEl = document.getElementById("lifeline");
+  lifelineEl.textContent = `Lifeline Count: ${lifeline}`;
 }
 
 async function initializeGame() {
@@ -130,6 +138,8 @@ async function checkAnswer() {
 
       if (chosenAnswer == data.correct_answer) {
         console.log("Correct Answer");
+        score += 1;
+        document.getElementById("score-count").textContent = `Score: ${score}`;
       } else {
         console.log("Wrong Answer");
       }
@@ -143,7 +153,7 @@ async function checkAnswer() {
 
 async function isLastQuestion() {
   if (cIndex === questionsData.length - 1) {
-    console.log(`THE END! Your score is ${lifeline}`);
+    console.log(`THE END! Your score is ${score}`);
     submitBtn.disabled = true;
   } else {
     cIndex += 1;
@@ -160,8 +170,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   fiftyBtn.addEventListener("click", function () {
     if (lifeline > 0) {
-      fifty_fifty();
       lifeline -= 1;
+      fifty_fifty();
     }
   });
 
