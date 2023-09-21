@@ -1,5 +1,3 @@
-// Provide a polyfill for TextEncoder
-
 const { TextEncoder, TextDecoder } = require("util");
 global.TextEncoder = TextEncoder;
 global.TextDecoder = TextDecoder;
@@ -10,7 +8,8 @@ const {
   shuffle,
   fifty_fifty,
   checkAnswer,
-  fiftyBtn,
+  initializeGame,
+  isLastQuestion,
 } = require("./questions");
 
 const { JSDOM } = require("jsdom");
@@ -104,7 +103,7 @@ describe("displayQuestions", () => {
     answerContainer.id = "answer-container";
     submitButton = document.createElement("button");
     submitButton.id = "submit-button";
-    fiftyBtn = document.createElement("button"); // Create the mock for the fifty-fifty button
+    fiftyBtn = document.createElement("button");
     fiftyBtn.id = "fifty-fifty";
 
     // Replace document methods to manipulate the DOM
@@ -119,7 +118,7 @@ describe("displayQuestions", () => {
         if (id === "question") return questionElement;
         if (id === "answer-container") return answerContainer;
         if (id === "submit-button") return submitButton;
-        if (id === "fifty-fifty") return fiftyBtn; // Ensure you return the mock for fifty-fifty button
+        if (id === "fifty-fifty") return fiftyBtn;
       }),
     };
   });
@@ -197,38 +196,38 @@ describe("shuffle", () => {
   });
 });
 
-describe("fifty_fifty NADIM VERSION", () => {
+describe("fifty_fifty", () => {
   it("is a function", () => {
     expect(fifty_fifty).toBeInstanceOf(Function);
   });
 
-  //   it("disables the filtered elements", () => {
-  //     document.body.innerHTML = `
-  //   <div id="answer-container">
-  //     <label for="answerA" class="answer-radio">
-  //       <input type="radio" id="answerA" name="answer" value="A" /> a) Answer A
-  //     </label>
-  //     <label for="answerB" class="answer-radio">
-  //       <input type="radio" id="answerB" name="answer" value="B" /> b) Answer B
-  //     </label>
-  //     <label for="answerC" class="answer-radio">
-  //       <input type="radio" id="answerC" name="answer" value="C" /> c) Answer C
-  //     </label>
-  //     <label for="answerD" class="answer-radio">
-  //       <input type="radio" id="answerD" name="answer" value="D" /> d) Answer D
-  //     </label>
-  //   </div>
-  //   <button id="submit-button">Submit</button>
-  //         <button id="fifty-fifty">50/50</button>
-  // `;
-  //     //fiftyBtn undefined
-  //     const fiftyBtn = document.querySelector("#fifty-fifty")
-  //     fifty_fifty();
-  //     const disabledAnswerInputs = document.querySelectorAll(
-  //       ".answer-radio input[disabled]"
-  //     );
-  //     expect(disabledAnswerInputs.length).toBe(2);
-  //   });
+  it("disables the filtered elements", () => {
+    document.body.innerHTML = `
+    <div id="answer-container">
+      <label for="answerA" class="answer-radio">
+        <input type="radio" id="answerA" name="answer" value="A" /> a) Answer A
+      </label>
+      <label for="answerB" class="answer-radio">
+        <input type="radio" id="answerB" name="answer" value="B" /> b) Answer B
+      </label>
+      <label for="answerC" class="answer-radio">
+        <input type="radio" id="answerC" name="answer" value="C" /> c) Answer C
+      </label>
+      <label for="answerD" class="answer-radio">
+        <input type="radio" id="answerD" name="answer" value="D" /> d) Answer D
+      </label>
+    </div>
+    <button id="submit-button">Submit</button>
+          <button id="fifty-fifty">50/50</button>
+  `;
+    //fiftyBtn undefined
+    const fiftyBtn = document.querySelector("#fifty-fifty");
+    fifty_fifty();
+    const disabledAnswerInputs = document.querySelectorAll(
+      ".answer-radio input[disabled]"
+    );
+    expect(disabledAnswerInputs.length).toBe(2);
+  });
   it("disables the fifty-fifty button once clicked", () => {});
 });
 
@@ -320,8 +319,71 @@ describe("checkAnswer", () => {
   });
 });
 
-// describe("isLastQuestion", () => {
-//   it("is a function", () => {
-//     expect(isLastQuestion).toBeInstanceOf(Function);
-//   });
-// });
+describe("initializeGame", () => {
+  it("is a function", () => {
+    expect(initializeGame).toBeInstanceOf(Function);
+  });
+});
+let questionsData = [
+  {
+    question: "Question 1",
+    correct_answer: "A",
+    incorrect_answers: ["B", "C", "D"],
+  },
+  {
+    question: "Question 2",
+    correct_answer: "B",
+    incorrect_answers: ["A", "C", "D"],
+  },
+  {
+    question: "Question 3",
+    correct_answer: "C",
+    incorrect_answers: ["A", "B", "D"],
+  },
+];
+
+let cIndex = 0;
+let lifeline = 3;
+let submitBtn;
+
+describe("isLastQuestion", () => {
+  beforeEach(() => {
+    submitBtn = document.createElement("button");
+    submitBtn.id = "submit-button";
+    document.body.appendChild(submitBtn);
+
+    questionsData = [
+      {
+        question: "Question 1",
+        correct_answer: "A",
+        incorrect_answers: ["B", "C", "D"],
+      },
+      {
+        question: "Question 2",
+        correct_answer: "B",
+        incorrect_answers: ["A", "C", "D"],
+      },
+      {
+        question: "Question 3",
+        correct_answer: "C",
+        incorrect_answers: ["A", "B", "D"],
+      },
+    ];
+
+    cIndex = 0;
+    lifeline = 3;
+  });
+
+  afterEach(() => {
+    document.body.removeChild(submitBtn);
+  });
+
+  it("is a function", () => {
+    expect(isLastQuestion).toBeInstanceOf(Function);
+  });
+
+  it("displays 'THE END' message and disables the submit button if last question", () => {
+    cIndex = questionsData.length - 1;
+    isLastQuestion();
+  });
+});
