@@ -9,6 +9,7 @@ const {
   displayQuestions,
   shuffle,
   fifty_fifty,
+  checkAnswer,
 } = require("./questions");
 
 const { JSDOM } = require("jsdom");
@@ -202,6 +203,94 @@ describe("fifty_fifty", () => {
 
   it("disables the filtered elements", () => {});
   it("disables the fifty-fifty button once clicked", () => {});
+});
+
+describe("checkAnswer", () => {
+  it("is a function", () => {
+    expect(checkAnswer).toBeInstanceOf(Function);
+  });
+
+  it("logs 'Correct Answer' for a correct answer", async () => {
+    // Mock the fetch response for this test case (correct answer)
+    const question = {
+      correct_answer: "A",
+    };
+
+    global.fetch.mockResolvedValueOnce({
+      ok: true,
+      json: async () => question,
+    });
+
+    // Create a sample DOM structure with a checked radio button
+    const checkedInput = document.createElement("input");
+    checkedInput.type = "radio";
+    checkedInput.checked = true;
+    checkedInput.value = "A"; // Correct answer
+
+    // Mock the document.querySelector method to return the sample input
+    document.querySelector = jest.fn(() => checkedInput);
+
+    // Mock the console.log method to capture logs
+    console.log = jest.fn();
+
+    // Call the checkAnswer function
+    await checkAnswer();
+
+    // Check if "Correct Answer" is logged
+    expect(console.log).toHaveBeenCalledWith("Correct Answer");
+  });
+
+  it("logs 'Wrong Answer' for an incorrect answer", async () => {
+    // Mock the fetch response for this test case (correct answer is 'A')
+    const question = {
+      correct_answer: "A",
+    };
+
+    global.fetch.mockResolvedValueOnce({
+      ok: true,
+      json: async () => question,
+    });
+
+    // Create a sample DOM structure with a checked radio button for an incorrect answer ('B')
+    const checkedInput = document.createElement("input");
+    checkedInput.type = "radio";
+    checkedInput.checked = true;
+    checkedInput.value = "B"; // Incorrect answer
+
+    // Mock the document.querySelector method to return the sample input
+    document.querySelector = jest.fn(() => checkedInput);
+
+    // Mock the console.log method to capture logs
+    console.log = jest.fn();
+
+    // Call the checkAnswer function
+    await checkAnswer();
+
+    // Check if "Wrong Answer" is logged
+    expect(console.log).toHaveBeenCalledWith("Wrong Answer");
+  });
+
+  it("logs 'unchecked' and shows an alert for no answer selected", async () => {
+    // Mock the console.log method to capture logs
+    console.log = jest.fn();
+
+    // Mock the window.alert method to capture alerts
+    window.alert = jest.fn();
+
+    // Mock the document.querySelector method to return null (no answer selected)
+    document.querySelector = jest.fn(() => null);
+
+    // Call the checkAnswer function with no checked input
+    await checkAnswer();
+
+    // Check if "unchecked" is logged
+    expect(console.log).toHaveBeenCalledWith("unchecked");
+
+    // Check if an alert is shown
+    expect(window.alert).toHaveBeenCalledWith(
+      "NO ANSWER SELECTED! PLEASE SELECT AN ANSWER!"
+    );
+  });
 });
 
 // describe("isLastQuestion", () => {

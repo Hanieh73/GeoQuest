@@ -117,6 +117,39 @@ async function initializeGame() {
   }
 }
 
+async function checkAnswer() {
+  if (document.querySelector("input[name=answer]:checked")) {
+    let chosenAnswer = document.querySelector(
+      "input[name=answer]:checked"
+    ).value;
+
+    let resp = await fetch(`http://localhost:3000/questions/${cIndex + 1}`);
+
+    if (resp.ok) {
+      const data = await resp.json();
+
+      if (chosenAnswer == data.correct_answer) {
+        console.log("Correct Answer");
+      } else {
+        console.log("Wrong Answer");
+      }
+      isLastQuestion();
+    }
+  } else {
+    console.log("unchecked");
+    alert("NO ANSWER SELECTED! PLEASE SELECT AN ANSWER!");
+  }
+}
+
+async function isLastQuestion() {
+  if (cIndex === questionsData.length - 1) {
+    console.log(`THE END! Your score is ${lifeline}`);
+    submitBtn.disabled = true;
+  } else {
+    cIndex += 1;
+    displayQuestions(questionsData);
+  }
+}
 document.addEventListener("DOMContentLoaded", async () => {
   const submitBtn = document.querySelector("#submit-button");
   fiftyBtn = document.querySelector("#fifty-fifty");
@@ -133,40 +166,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   await initializeGame();
-
-  async function checkAnswer() {
-    if (document.querySelector("input[name=answer]:checked")) {
-      let chosenAnswer = document.querySelector(
-        "input[name=answer]:checked"
-      ).value;
-
-      let resp = await fetch(`http://localhost:3000/questions/${cIndex + 1}`);
-
-      if (resp.ok) {
-        const data = await resp.json();
-
-        if (chosenAnswer == data.correct_answer) {
-          console.log("Correct Answer");
-        } else {
-          console.log("Wrong Answer");
-        }
-        isLastQuestion();
-      }
-    } else {
-      console.log("unchecked");
-      alert("NO ANSWER SELECTED! PLEASE SELECT AN ANSWER!");
-    }
-  }
-
-  async function isLastQuestion() {
-    if (cIndex === questionsData.length - 1) {
-      console.log(`THE END! Your score is ${lifeline}`);
-      submitBtn.disabled = true;
-    } else {
-      cIndex += 1;
-      displayQuestions(questionsData);
-    }
-  }
 });
 
 module.exports = {
@@ -174,4 +173,5 @@ module.exports = {
   shuffle,
   displayQuestions,
   fifty_fifty,
+  checkAnswer,
 };
