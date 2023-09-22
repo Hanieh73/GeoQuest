@@ -7,6 +7,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
+
     <title>GeoQuest Questions</title>
 
     <link rel="stylesheet" href="./index.css" />
@@ -15,6 +16,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./questions.css" />
+
     <script defer src="./index.js"></script>
 
     <!-- <link rel="icon" type="image/png" href="./images/red-pinpoint.jpeg" /> -->
@@ -31,7 +33,7 @@
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container">
         <!-- Move the logo and title to the left side -->
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="./index.html">
           <img
             class="navbar-brand custom-logo"
             src="./images/geoquest-logo.png"
@@ -51,9 +53,11 @@
         </h1>
         <!-- check next 4 lines -->
         <div class="box d-flex justify-content-between w-100">
-          <h3 id="score-count">Score: 0<span></span></h3>
-          <h3 id="lifeline">Lifeline Count: 3</h3>
-          <h3 class="count" id="question-number">Questions: <span></span></h3>
+          <div class="lifeline-score-container">
+            <h3 id="score-count">Score: 0<span></span></h3>
+            <h3 id="lifeline">Lifeline Count: 3</h3>
+          </div>
+          <h3 class="count" id="question-number"><span></span></h3>
         </div>
       </div>
       <div class="quiz-container">
@@ -78,15 +82,21 @@
             Perth
           </label>
         </div>
-        <button id="submit-button">Submit</button>
-        <button class="animate__animated animate__pulse" id="fifty-fifty">
-          50/50
-        </button>
+        <div class="button-container">
+          <button id="submit-button" class="btn submit-button">Submit</button>
+          <button
+            class="btn fifty-btn animate__animated animate__pulse"
+            id="fifty-fifty"
+          >
+            50/50
+          </button>
+        </div>
+
         <p id="result"></p>
       </div>
     </main>
     <footer class="footer">
-      <div class="container">
+      <div>
         <p>&copy; 2023 GeoQuest. All rights reserved.</p>
       </div>
     </footer>

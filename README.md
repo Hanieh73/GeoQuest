@@ -4,15 +4,15 @@ GeoQuest is a quiz-based geography learning platform that takes you on a virtual
 
 ## Table of Contents
 
-- [About] (#about)
-- [User Story] (#user story)
-- [Project Planning] (#project planning)
-- [Getting Started] (#getting started)
-- [Extra Features] (#extra features)
-- [Built With] (#built with)
-- [Contributing] (#contributing)
-- [Authors & Acknowledgment] (#authors & acknowledgment)
-- [License] (#license)
+- [About](#about)
+- [User Story](#user-story)
+- [Project Planning](#project-planning)
+- [Getting Started](#getting-started)
+- [Extra Features](#extra-features)
+- [Built With](#built-with)
+- [Contributing](#contributing)
+- [Authors & Acknowledgment](#authors--acknowledgment)
+- [License](#license)
 
 ## About
 
@@ -27,20 +27,20 @@ As a user, you have access to the following functionalities:
 - **User Profile:** When starting the game, you will be prompted to enter your name, which will be stored for the duration of the session.
 - **Challenging Quizzes:** You can take on various challenges that involve answering multiple-choice geography-related questions.
 - **Scoring System:** Earn 1 point for each correct answer and view your final score at the end of the game.
-- **Quiz Formats:** You have the option to choose between text-based questions, flag-based questions, or a timed quiz, adding variety to your gameplay.
+- **Quiz Formats:** You have the option to choose between text-based questions or timed flag-based questions, adding variety to your gameplay.
 - **Randomized Questions:** Questions are randomized every time you start a quiz, keeping the experience fresh.
 - **Lifelines:** In the text-based "World Tour" quiz, you are provided with 3 "50/50" lifelines for every 15 questions. These lifelines remove 2 wrong answer options, helping you make better choices.
 
 ## Project Planning
 
-Our project was meticulously planned and executed to ensure a successful outcome. Here's a brief overview of our approach:
+Our project was well planned and executed to ensure a successful outcome. Here's a brief overview of our approach:
 
 - **Wireframe and Task Plan:** We began with an initial wireframe and a daily task plan, outlining responsibilities for each team member.
 - **Trello Board:** We utilized a Trello board to list essential features and extra features, categorizing them for clarity.
 - **Task Assignment:** Team members were assigned specific tasks, and we established a clear process for approving pull requests.
 - **Effective Communication:** Regular communication was crucial to maintain task clarity, mutual support, and accountability. Daily stand-up huddles and ongoing communication ensured everyone was on the same page.
 - **Feature Prioritization:** We prioritized essential features and gradually incorporated extra features to enhance the user experience.
-- **Testing and Quality Assurance:** Rigorous testing was conducted, aiming for at least 50% test coverage using Jest.
+- **Testing and Quality Assurance:** Extensive testing was conducted, aiming for at least 50% test coverage using Jest.
 
 ## Getting Started
 
@@ -48,49 +48,43 @@ If you would like to explore the project, follow these steps:
 
 1. Clone the project repository using SSH:
 
-   ```
+   ```sh
    git clone ssh-link-to-repo
-
    ```
 
 2. Navigate to the project directory (back-end folder):
 
-   ```
+   ```sh
    cd back-end
-
    ```
 
 3. Install project dependencies:
 
-   ```
+   ```sh
    npm install
-
    ```
 
 4. Install nodemon as a development dependency:
 
-   ```
+   ```sh
    npm install -D nodemon
-
    ```
 
 5. Change the script to run the development server with nodemon:
 
-   ```
+   ```json
    "scripts": {
      "dev": "nodemon node.js"
    }
-
    ```
 
 6. Start the development server:
 
-   ```
+   ```sh
    npm run dev
-
    ```
 
-## **Extra Features**
+## Extra Features
 
 In addition to the core functionalities, we have exciting extra features in mind that we plan to add in the future:
 
@@ -101,19 +95,19 @@ In addition to the core functionalities, we have exciting extra features in mind
 
 ## Built With
 
-HTML
-CSS
-JavaScript
-Bootstrap
-Express
-Node
-Cors
-Git
-Github
+- HTML
+- CSS
+- JavaScript
+- Bootstrap
+- Express
+- Node
+- Cors
+- Git
+- Github
 
 ## Contributing
 
-We welcome contributions from the open-source community to make GeoQuest even better. If you'd like to contribute, please follow our contribution guidelines.
+We welcome contributions from the open-source community to make GeoQuest even better.
 
 ## Authors & Acknowledgment
 
@@ -122,8 +116,6 @@ We welcome contributions from the open-source community to make GeoQuest even be
 - Mohammed Nadim Ahmed
 - Stephen Murray
 
-## License (For open source projects, say how it is licensed.)
+## License
 
 GeoQuest is licensed under the MIT License. Feel free to use, modify, and distribute it in accordance with the terms specified in the license.
-
-[MIT](https://choosealicense.com/licenses/mit/)

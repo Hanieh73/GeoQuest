@@ -1,7 +1,7 @@
 /* Global Styles */
 body {
   font-family: "Roboto", sans-serif;
-  background-color: #faf3dd;
+  background-color: #faf3dd !important;
   margin: 0;
   padding: 0;
   text-align: center;
@@ -136,9 +136,9 @@ button:hover {
   background-color: #292e1e;
   color: white;
   padding: 20px 0;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
 }
 
 /* Logo and Title Styles */
@@ -185,4 +185,76 @@ button:hover {
 }
 #question {
   font-size: 2rem;
+}
+
+/* Add rounded corners to buttons */
+button.submit-button,
+button.fifty-btn {
+  padding: 12px 24px;
+  font-size: 1.5rem;
+  border-radius: 25px; /* Adjust the radius as needed */
+  border: 3px solid #292e1e;
+  background-color: #8fc0a9;
+  color: #292e1e;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+  margin-right: 20px; /* Add space between buttons */
+}
+
+button.submit-button:hover,
+button.fifty-btn:hover {
+  background-color: #292e1e;
+  color: white;
+  border-color: #292e1e;
+}
+
+/* Center buttons both horizontally and vertically */
+.button-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  margin-top: 20px;
+}
+
+/* Add this CSS rule to style the lifeline and score container */
+.lifeline-score-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adjust the gap as needed */
+}
+
+.quiz-headline {
+  padding-top: 50px; /* Increase the top padding for vertical centering */
+  padding-bottom: 50px; /* Maintain the same bottom padding */
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+}
+/* Add this CSS rule to add a box shadow to the lifeline and score container */
+.lifeline-score-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adjust the gap as needed */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add box shadow */
+}
+/* Add this CSS rule to add space between score and lifeline */
+#score-count {
+  margin-right: 10px; /* Adjust the margin as needed */
+}
+
+/* Add this CSS rule to center score and lifeline vertically */
+.lifeline-score-container {
+  display: flex;
+  align-items: center;
+
+  gap: 10px; /* Adjust the gap as needed */
+  justify-content: center; /* Center horizontally */
+  margin-top: 20px; /* Add space between Game Mode and score/lifeline */
+  margin-left: 200px;
+  border-radius: 50px;
+  padding: 20px;
+}
+
+#score-count {
+  margin-right: 10px; /* Adjust the margin as needed */
 }
