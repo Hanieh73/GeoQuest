@@ -99,24 +99,17 @@ function checkAnswer(rAnswer, count) {
 	}
 }
 
-//To Generate A New Game
-btnNewGame.addEventListener("click", () => {
-	window.location.reload();
-});
-
 let timerElement = document.getElementById("timer");
 let timerMessageElement = document.getElementById("timer-message");
-let timeLeft = 150; // Set the initial time (in seconds)
+let timeLeft = 200; //
 
 function showCustomAlert(score, questionCount) {
 	const customAlert = document.getElementById("customAlert");
 	const customAlertScore = document.getElementById("customAlertScore");
 	const customAlertQuestionCount = document.getElementById("customAlertQuestionCount");
 
-	// Set the score and question count in the alert box
 	customAlertScore.textContent = score;
 	customAlertQuestionCount.textContent = questionCount;
-
 	customAlert.style.display = "flex";
 }
 
@@ -125,7 +118,6 @@ function showQuizFinishedAlert(score, questionCount) {
 	const quizFinishedScore = document.getElementById("quizFinishedScore");
 	const quizFinishedQuestionCount = document.getElementById("quizFinishedQuestionCount");
 
-	// Set the score and question count in the alert box
 	quizFinishedScore.textContent = score;
 	quizFinishedQuestionCount.textContent = questionCount;
 
