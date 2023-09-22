@@ -60,6 +60,40 @@
             <h3 class="incorrect">Your incorrect answers <span></span></h3>
             <button id="newGame">New Game</button>
           </div>
+          <div class="timer">
+            <p id="timer-message"></p>
+            Timer:<span id="timer"> </span> seconds
+          </div>
+        </div>
+        <div id="customAlert" class="custom-alert">
+          <div class="custom-alert-content">
+            <p class="alert-text">Time's up!</p>
+            <p class="alert-text">
+              Your Score: <span id="customAlertScore"></span>
+            </p>
+            <p class="alert-text">
+              Questions Answered: <span id="customAlertQuestionCount"></span>
+            </p>
+            <p class="alert-text">
+              Click here to go back to the > <a href="index.html">homepage</a>.
+            </p>
+            <button id="customAlertOK">Try again?</button>
+          </div>
+        </div>
+        <div id="quizFinishedAlert" class="custom-alert" style="display: none">
+          <div class="custom-alert-content quiz-finished">
+            <p class="alert-text">Quiz Finished!</p>
+            <p class="alert-text">
+              Your Score: <span id="quizFinishedScore"></span>
+            </p>
+            <p class="alert-text">
+              Questions Answered: <span id="quizFinishedQuestionCount"></span>
+            </p>
+            <p class="alert-text">
+              Click here to go back to the > <a href="index.html">homepage</a>.
+            </p>
+            <button id="quizFinishedOk">Try again?</button>
+          </div>
         </div>
       </div>
     </main>

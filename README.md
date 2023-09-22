@@ -2,6 +2,24 @@
 
 GeoQuest is a quiz-based geography learning platform that takes you on a virtual journey around the world while testing your knowledge of geography.
 
+## Table of Contents
+
+- [About] (#about)
+- [User Story] (#user story)
+- [Project Planning] (#project planning)
+- [Getting Started] (#getting started)
+- [Extra Features] (#extra features)
+- [Built With] (#built with)
+- [Contributing] (#contributing)
+- [Authors & Acknowledgment] (#authors & acknowledgment)
+- [License] (#license)
+
+## About
+
+Welcome to GeoQuest, your passport to a thrilling journey of geographical discovery! Whether you're a student preparing for a geography quiz or a geography enthusiast looking to expand your knowledge, this platform is designed to make learning about the world both fun and informative.
+
+GeoQuest is more than just a quiz platform; it's an educational adventure. Embark on a virtual journey around the globe, explore diverse landscapes, cultures, and landmarks, and put your geography skills to the test. With a wide range of quiz topics and interactive challenges, GeoQuest is your ticket to becoming a geography expert.
+
 ## User Story
 
 As a user, you have access to the following functionalities:
@@ -80,3 +98,32 @@ In addition to the core functionalities, we have exciting extra features in mind
 - **Map Puzzle:** Challenge yourself to assemble country maps from puzzle pieces, enhancing your geographical skills.
 - **Leaderboards:** Compete globally and locally by checking out leaderboards to see how you rank among other players.
 - **Sound and Visual Effects:** Immerse yourself in an engaging learning experience with captivating visuals and sound effects that make learning fun and memorable.
+
+## Built With
+
+HTML
+CSS
+JavaScript
+Bootstrap
+Express
+Node
+Cors
+Git
+Github
+
+## Contributing
+
+We welcome contributions from the open-source community to make GeoQuest even better. If you'd like to contribute, please follow our contribution guidelines.
+
+## Authors & Acknowledgment
+
+- Hannieh Zaab
+- Justin Graham
+- Mohammed Nadim Ahmed
+- Stephen Murray
+
+## License (For open source projects, say how it is licensed.)
+
+GeoQuest is licensed under the MIT License. Feel free to use, modify, and distribute it in accordance with the terms specified in the license.
+
+[MIT](https://choosealicense.com/licenses/mit/)
