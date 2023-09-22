@@ -79,6 +79,7 @@ h5 {
 }
 
 .section-description {
+  font-weight: bold;
   font-size: 1rem;
   color: black;
   margin-bottom: 40px;
@@ -130,12 +131,14 @@ h5 {
   font-size: 1.2rem;
   color: #292e1e;
 }
-
 /* Footer Styles */
 .footer {
   background-color: #292e1e;
   color: white;
-  padding: 20px 0;
+  padding: 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .footer p {
