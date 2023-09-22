@@ -56,9 +56,9 @@ function displayQuestions(questions) {
   );
   const submitButton = document.getElementById("submit-button");
   const resultElement = document.getElementById("result");
-  document.getElementById(
-    "question-number"
-  ).textContent = `Question ${questions.length}`;
+  // document.getElementById(
+  //   "question-number"
+  // ).textContent = `Question ${questions.length}`;
 
   questionElement.textContent = `Question ${cIndex + 1}: ${
     currentQuestion.question
