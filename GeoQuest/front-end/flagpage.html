@@ -3,70 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-    crossorigin="anonymous"/>
-  
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  
-    <link rel="stylesheet" href="./flag.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./flag.css" />
     <title>Flag Guesser</title>
-
-</head>
-<body>
-    <nav class="navbar navbar-expand bg-body-primary d-flex justify-content-space-around sticky-top">
-        <div class="container">
-            <div class="nav-item">
-                <a href="index.html" class="icons"><i class="fa-solid fa-house fa-2xl"></i></a>
-            </div>
-            <div class="d-flex">
-                <a class="navbar-brand" href="index.html">
-                    <img
-                    src="./images/pinpoint-map-icon.png"
-                    width="30"
-                    height="30"
-                    class="d-inline-block align-top"
-                    alt=""
-                    />
-                    GeoQuest
-                </a>
-                <ul class="navbar-nav nav-underline">
-                    <li class="nav-item">
-                        <a href="index.html" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Plans</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Contact Us</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="icons nav-item">
-                <span id="sign-in">SIGN IN</span>
-                <i class="fa-solid fa-circle-user fa-2xl"></i>
-                <i class="fa-solid fa-user fa-2xl"></i>
-            </div>
+  </head>
+  <body class="align" id="start">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+        <div class="d-flex align-items-center">
+          <a class="navbar-brand" href="./index.html">
+            <img
+              class="imgLogo"
+              src="./images/geoquest-logo.png"
+              width="100"
+              height="100"
+              alt="GeoQuest Logo"
+            />
+            <span class="titleGeo">GeoQuest</span>
+          </a>
         </div>
+      </div>
     </nav>
-
     <main>
       <div class="container">
-        <h1>GeoFlags</h1>
+        <h1 class="gameMode game-mode-header animate__animated animate__wobble">
+          Game Mode - GeoFlag Challenge
+        </h1>
+        <div class="question">
+          <h3 class="score">Score: <span></span></h3>
 
-        <div class="box">
-          <h3>Score: <span></span></h3>
           <div class="count">Questions: <span></span></div>
         </div>
         <div class="flags">
@@ -75,9 +50,9 @@
           </div>
           <div class="flag-options">
             <ul>
-              <li></li>
-              <li></li>
-              <li></li>
+              <li class="answer"></li>
+              <li class="answer"></li>
+              <li class="answer"></li>
             </ul>
           </div>
           <div class="score">
@@ -122,6 +97,13 @@
         </div>
       </div>
     </main>
+
+    <!-- Footer -->
+    <footer class="footer" style="background-color: #292e1e; color: white">
+      <div class="container">
+        <p>&copy; 2023 GeoQuest. All rights reserved.</p>
+      </div>
+    </footer>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
