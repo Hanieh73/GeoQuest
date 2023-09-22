@@ -2,186 +2,186 @@
     {
         "img": "./images/argentina.png",
         "options": [
-            "guatemala",
-            "argentina",
-            "uruguay"
+            "Guatemala",
+            "Argentina",
+            "Uruguay"
         ],
-        "right_answer": "argentina"
+        "right_answer": "Argentina"
     },
 
     {
         "img": "./images/brazil.png",
         "options": [
-            "bolivia",
-            "chile",
-            "brazil"
+            "Bolivia",
+            "Chile",
+            "Brazil"
         ],
-        "right_answer": "brazil"
+        "right_answer": "Brazil"
     },
 
     {
         "img": "./images/canada.png",
         "options": [
-            "canada",
-            "egypt",
-            "tunisia"
+            "Canada",
+            "Egypt",
+            "Tunisia"
         ],
-        "right_answer": "canada"
+        "right_answer": "Canada"
     },
 
     {
         "img": "./images/egypt.png",
         "options": [
-            "syria",
-            "egypt",
-            "iraq"
+            "Syria",
+            "Egypt",
+            "Iraq"
         ],
-        "right_answer": "egypt"
+        "right_answer": "Egypt"
     },
 
     {
         "img": "./images/germany.png",
         "options": [
-            "belgium",
-            "ireland",
-            "germany"
+            "Belgium",
+            "Ireland",
+            "Germany"
         ],
-        "right_answer": "germany"
+        "right_answer": "Germany"
     },
     {
         "img": "./images/iraq.png",
         "options": [
-            "iraq",
-            "syria",
-            "yemen"
+            "Iraq",
+            "Syria",
+            "Yemen"
         ],
-        "right_answer": "iraq"
+        "right_answer": "Iraq"
     },
     {
         "img": "./images/lebanon.png",
         "options": [
-            "canada",
-            "lebanon",
-            "morocco"
+            "Canada",
+            "Lebanon",
+            "Morocco"
         ],
-        "right_answer": "lebanon"
+        "right_answer": "Lebanon"
     },
     {
         "img": "./images/somalia.png",
         "options": [
-            "vietnam",
-            "somalia",
-            "albania"
+            "Vietnam",
+            "Somalia",
+            "Albania"
         ],
-        "right_answer": "somalia"
+        "right_answer": "Somalia"
     },
     {
         "img": "./images/uzbekistan.png",
         "options": [
-            "uzbekistan",
-            "tajikistan",
-            "kyrgyzstan"
+            "Uzbekistan",
+            "Tajikistan",
+            "Kyrgyzstan"
         ],
-        "right_answer": "uzbekistan"
+        "right_answer": "Uzbekistan"
     },
     {
         "img": "./images/mexico.png",
         "options": [
-            "italy",
-            "iran",
-            "mexico"
+            "Italy",
+            "Iran",
+            "Mexico"
         ],
-        "right_answer": "mexico"
+        "right_answer": "Mexico"
     },
     {
         "img": "./images/monaco.png",
         "options": [
-            "monaco",
-            "maldives",
+            "Monaco",
+            "Maldives",
             "Zimbabwe"
         ],
-        "right_answer": "monaco"
+        "right_answer": "Monaco"
     },
     {
         "img": "./images/luxembourg.png",
         "options": [
-            "russia",
-            "luxembourg",
-            "netherlands"
+            "Russia",
+            "Luxembourg",
+            "Netherlands"
         ],
-        "right_answer": "luxembourg"
+        "right_answer": "Luxembourg"
     },
     {
         "img": "./images/qatar.png",
         "options": [
-            "bahrain",
-            "qatar",
-            "lebanon"
+            "Bahrain",
+            "Qatar",
+            "Lebanon"
         ],
-        "right_answer": "qatar"
+        "right_answer": "Qatar"
     },
     {
         "img": "./images/libya.png",
         "options": [
-            "pakistan",
+            "Pakistan",
             "Madagascar",
-            "libya"
+            "Libya"
         ],
-        "right_answer": "libya"
+        "right_answer": "Libya"
     },
     {
         "img": "./images/sweden.png",
         "options": [
-            "sweden",
-            "denmark",
-            "norway"
+            "Sweden",
+            "Denmark",
+            "Norway"
         ],
-        "right_answer": "sweden"
+        "right_answer": "Sweden"
     },
     {
         "img": "./images/chad.png",
         "options": [
-            "romania",
-            "mali",
-            "chad"
+            "Romania",
+            "Mali",
+            "Chad"
         ],
-        "right_answer": "chad"
+        "right_answer": "Chad"
     },
     {
         "img": "./images/mali.png",
         "options": [
-            "guinea",
-            "mali",
-            "senegal"
+            "Guinea",
+            "Mali",
+            "Senegal"
         ],
-        "right_answer": "mali"
+        "right_answer": "Mali"
     },
     {
         "img": "./images/bolivia.png",
         "options": [
-            "bolivia",
-            "lithuania",
+            "Bolivia",
+            "Lithuania",
             "Benin"
         ],
-        "right_answer": "bolivia"
+        "right_answer": "Bolivia"
     },
     {
         "img": "./images/nepal.png",
         "options": [
             "Madagascar",
-            "nepal",
+            "Nepal",
             "Benin"
         ],
-        "right_answer": "nepal"
+        "right_answer": "Nepal"
     },
     {
         "img": "./images/turkey.png",
         "options": [
-            "pakistan",
-            "tunisia",
-            "turkey"
+            "Pakistan",
+            "Tunisia",
+            "Turkey"
         ],
-        "right_answer": "turkey"
+        "right_answer": "Turkey"
     }
 
 ]
