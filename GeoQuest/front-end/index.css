@@ -1,0 +1,220 @@
+/* Global Styles */
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #faf3dd;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+/* nav bar */
+.navbar {
+  background-color: #c8d5b9; /* Bright background color */
+}
+
+.navbar a.navbar-brand,
+.navbar a.navbar-brand:hover {
+  color: #292e1e; /* Dark text color */
+}
+
+.navbar img.d-inline-block {
+  filter: brightness(0) invert(1); /* Invert the image color */
+}
+
+/* Style the navigation links */
+.navbar a.navbar-brand,
+.navbar a.navbar-brand:hover,
+.navbar a.navbar-brand:focus {
+  color: #292e1e; /* Dark text color */
+  text-decoration: none;
+}
+
+/* Style the navigation links on hover and focus */
+/* .navbar a.navbar-brand:hover,
+.navbar a.navbar-brand:focus {
+  text-decoration: underline;
+} */
+
+/* Header Styles */
+#user-msg {
+  font-size: 2rem;
+  color: #292e1e;
+  margin: 20px 0;
+}
+
+h5 {
+  font-size: 1.5rem;
+  color: #292e1e;
+  margin-bottom: 20px;
+}
+
+/* Section Styles */
+.section-heading {
+  font-size: 2rem;
+  color: #292e1e;
+  margin-bottom: 20px;
+  font-weight: bold;
+
+  box-shadow: none; /* Remove the box shadow */
+}
+
+/* Media query for larger screens */
+@media (min-width: 769px) {
+  .section-heading {
+    background-color: rgba(
+      200,
+      213,
+      185,
+      0.8
+    ); /* Set the background color for larger screens */
+    padding: 10px 20px; /* Add padding for spacing */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 5px 5px 5px 1px rgba(120, 120, 120, 0.44);
+  }
+}
+
+.section-description {
+  font-weight: bold;
+  font-size: 1rem;
+  color: black;
+  margin-bottom: 40px;
+  font-style: italic; /* Italicize the text */
+  text-align: center; /* Center-align the text */
+  padding: 10px;
+}
+
+.question-type {
+  width: 300px;
+  height: 300px;
+  background-color: #c8d5b9;
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+.question-type a {
+  text-decoration: none; /* Remove underlines from links */
+}
+.question-type p {
+  font-weight: bold; /* Make the font bold */
+  font-size: 1.2rem; /* Set the font size */
+  transition: text-decoration 0.3s, font-size 0.3s; /* Add transition effects */
+}
+
+.question-type:hover {
+  transform: scale(1.05);
+  box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+.question-type a:hover p {
+  text-decoration: underline; /* Underline on hover */
+  font-size: 1.3rem; /* Increase font size on hover */
+}
+
+.question-type img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.question-type p {
+  font-size: 1.2rem;
+  color: #292e1e;
+}
+/* Footer Styles */
+.footer {
+  background-color: #292e1e;
+  color: white;
+  padding: 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar a {
+    font-size: 1rem;
+  }
+
+  .section-heading {
+    font-size: 1.5rem;
+    color: #292e1e;
+    margin-bottom: 20px;
+    background-color: rgba(
+      200,
+      213,
+      185,
+      0.8
+    ); /* Translucent background color */
+    padding: 10px 20px; /* Add padding for spacing */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 5px 5px 5px 1px rgba(120, 120, 120, 0.44);
+  }
+
+  .section-description {
+    font-size: 0.9rem;
+  }
+
+  .question-type {
+    width: 100%;
+    height: auto;
+    margin: 10px 0;
+  }
+}
+
+.welcome-text {
+  font-size: 1.5rem;
+  color: #555;
+  font-style: italic; /* Add italic style */
+}
+.title {
+  font-size: 2rem;
+  color: #292e1e;
+  font-weight: bold;
+}
+
+/* Updated Button Styles */
+.nav-link.start.btn.btn-primary {
+  padding: 12px 24px; /* Increase padding for a bigger size */
+  font-size: 1.5rem; /* Increase font size */
+  border-radius: 50px;
+  background-color: #8fc0a9; /* Set the button color to #8FC0A9 */
+  color: black; /* Set text color to white */
+  transition: background-color 0.3s; /* Add a transition effect */
+}
+
+.nav-link.btn.btn-primary:hover {
+  background-color: #8fc0a9; /* Change color on hover */
+  color: white; /* Ensure text color remains white on hover */
+}
+
+.navbar-brand.rounded-circle img {
+  border-radius: 50%; /* Create a circular shape */
+}
+.custom-logo {
+  border-radius: 40px;
+}
+
+/* Update the border style for the section */
+.w-75.border {
+  border: 2px solid rgba(200, 213, 185, 0.8); /* Add a translucent border */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px;
+  box-shadow: 5px 5px 5px 1px rgba(120, 120, 120, 0.44);
+}

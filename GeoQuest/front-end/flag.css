@@ -1,0 +1,289 @@
+/* Global Styles */
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #faf3dd;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Navbar Styles */
+.navbar {
+  background-color: #c8d5b9;
+}
+
+.navbar a.navbar-brand,
+.navbar a.navbar-brand:hover {
+  color: #292e1e; /* Dark text color */
+  font-family: "Roboto", sans-serif; /* Use the same font as the index logo */
+  font-size: 2rem; /* Increase font size */
+}
+
+/* Style the navigation links */
+.navbar a.navbar-brand,
+.navbar a.navbar-brand:hover,
+.navbar a.navbar-brand:focus {
+  color: #292e1e; /* Dark text color */
+  text-decoration: none;
+}
+
+/* Page-specific Styles */
+/* Add your page-specific styles below this line */
+
+/* Flag Page Styles */
+main {
+  background-color: #faf3dd; /* Match the background color */
+}
+
+h1 {
+  color: #292e1e; /* Match the heading color */
+}
+
+.box {
+  background-color: #c8d5b9; /* Match the box background color */
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+h3 {
+  color: #292e1e; /* Match the text color */
+}
+
+/* .flag-img img {
+  max-width: 100%;
+  padding-bottom: 30px;
+} */
+
+.container {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media(min-width: 576px) {
+  .container {
+      width: 540px;
+  }
+}
+
+@media(min-width: 768px) {
+  .container {
+      width: 720px;
+  }
+}
+
+@media(min-width: 992px) {
+  .container {
+      width: 960px;
+  }
+}
+
+@media(min-width: 1200px) {
+  .container {
+      width: 1140px;
+  }
+}
+
+@media(min-width: 1400px) {
+  .container {
+      width: 1320px;
+  }
+}
+
+.flags {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 2rem 1.5rem;
+}
+
+.flags .flag-img img {
+  width: 30rem;
+  height: 20rem;
+  animation: zoom-in-zoom-out 3s ease-in infinite;
+}
+
+@keyframes zoom-in-zoom-out {
+  0% {
+      transform: scale(1, 1);
+  }
+
+  50% {
+      transform: scale(1.1, 1.1);
+  }
+
+  100% {
+      transform: scale(1, 1);
+  }
+}
+
+.flag-options {
+  width: 50%
+}
+
+.flag-options ul {
+  list-style: none;
+  padding: 25px;
+}
+
+.flag-options ul li {
+  margin: 5px 0;
+  background-color: #c8d5b9; /* Match the option background color */
+  padding: 10px;
+  border-radius: 20px;
+}
+
+
+.score {
+  margin-top: 20px;
+}
+
+.score h3 {
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+#newGame {
+  padding: 12px 24px;
+  font-size: 1.5rem;
+  border-radius: 50px;
+  background-color: #8fc0a9; /* Match the button color */
+  color: black; /* Set text color to black */
+  transition: background-color 0.3s;
+}
+
+#newGame:hover {
+  background-color: #8fc0a9;
+  color: white;
+}
+
+.imgLogo {
+  border-radius: 30px;
+}
+
+
+.count {
+  font-weight: bolder;
+  padding-bottom: 20px;
+  font-size: 30px;
+}
+
+.score {
+  color: #292e1e;
+  position: relative;
+  font-weight: bolder;
+}
+
+.answer {
+  font-size: 2rem; /* Increase font size for answers */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Add hover effect for answers */
+.answer:hover {
+  background-color: #292e1e; /* Change background color on hover */
+  color: white; /* Change text color on hover */
+}
+
+/* Add active effect for answers */
+.answer.active {
+  background-color: #c8d5b9; /* Change background color when selected */
+  color: black; /* Change text color when selected */
+  transform: scale(1.1); /* Scale up the answer box when selected */
+}
+
+h3.right,
+h3.incorrect {
+  margin-top: 20px; /* Add margin for spacing */
+  font-weight: bold; /* Make the text bold */
+  color: #333;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+h3.right span,
+h3.incorrect span {
+  font-weight: normal; /* Remove bold for the spans */
+  color: #777; /* Change the color of the spans to a lighter color */
+  margin-left: 5px; /* Add a small margin between the text and the spans */
+}
+
+.custom-alert {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-alert-content {
+  background: #c8d5b9;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.custom-alert-content p {
+  margin-bottom: 15px;
+}
+
+.custom-alert-content a {
+  color: blue;
+  text-decoration: underline;
+}
+
+#customAlertOK {
+  background-color: #292e1e;
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#quizFinishedOk {
+  background-color: #292e1e;
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.alert-text {
+  font-size: 15px; /* Adjust the font size as needed */
+}
+
+.footer {
+  background-color: #292e1e;
+  color: white;
+  padding: 10px 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.timer{
+  margin: 5px 0;
+  background-color: #8FC0A9; /* Match the option background color */
+  padding:20px;
+  border-radius: 20px;
+  color: black;
+  font-weight: bold;
+  align-items: center;
+}
+

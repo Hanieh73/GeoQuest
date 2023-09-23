@@ -1,0 +1,187 @@
+[
+    {
+        "img": "./images/argentina.png",
+        "options": [
+            "Guatemala",
+            "Argentina",
+            "Uruguay"
+        ],
+        "right_answer": "Argentina"
+    },
+
+    {
+        "img": "./images/brazil.png",
+        "options": [
+            "Bolivia",
+            "Chile",
+            "Brazil"
+        ],
+        "right_answer": "Brazil"
+    },
+
+    {
+        "img": "./images/canada.png",
+        "options": [
+            "Canada",
+            "Egypt",
+            "Tunisia"
+        ],
+        "right_answer": "Canada"
+    },
+
+    {
+        "img": "./images/egypt.png",
+        "options": [
+            "Syria",
+            "Egypt",
+            "Iraq"
+        ],
+        "right_answer": "Egypt"
+    },
+
+    {
+        "img": "./images/germany.png",
+        "options": [
+            "Belgium",
+            "Ireland",
+            "Germany"
+        ],
+        "right_answer": "Germany"
+    },
+    {
+        "img": "./images/iraq.png",
+        "options": [
+            "Iraq",
+            "Syria",
+            "Yemen"
+        ],
+        "right_answer": "Iraq"
+    },
+    {
+        "img": "./images/lebanon.png",
+        "options": [
+            "Canada",
+            "Lebanon",
+            "Morocco"
+        ],
+        "right_answer": "Lebanon"
+    },
+    {
+        "img": "./images/somalia.png",
+        "options": [
+            "Vietnam",
+            "Somalia",
+            "Albania"
+        ],
+        "right_answer": "Somalia"
+    },
+    {
+        "img": "./images/uzbekistan.png",
+        "options": [
+            "Uzbekistan",
+            "Tajikistan",
+            "Kyrgyzstan"
+        ],
+        "right_answer": "Uzbekistan"
+    },
+    {
+        "img": "./images/mexico.png",
+        "options": [
+            "Italy",
+            "Iran",
+            "Mexico"
+        ],
+        "right_answer": "Mexico"
+    },
+    {
+        "img": "./images/monaco.png",
+        "options": [
+            "Monaco",
+            "Maldives",
+            "Zimbabwe"
+        ],
+        "right_answer": "Monaco"
+    },
+    {
+        "img": "./images/luxembourg.png",
+        "options": [
+            "Russia",
+            "Luxembourg",
+            "Netherlands"
+        ],
+        "right_answer": "Luxembourg"
+    },
+    {
+        "img": "./images/qatar.png",
+        "options": [
+            "Bahrain",
+            "Qatar",
+            "Lebanon"
+        ],
+        "right_answer": "Qatar"
+    },
+    {
+        "img": "./images/libya.png",
+        "options": [
+            "Pakistan",
+            "Madagascar",
+            "Libya"
+        ],
+        "right_answer": "Libya"
+    },
+    {
+        "img": "./images/sweden.png",
+        "options": [
+            "Sweden",
+            "Denmark",
+            "Norway"
+        ],
+        "right_answer": "Sweden"
+    },
+    {
+        "img": "./images/chad.png",
+        "options": [
+            "Romania",
+            "Mali",
+            "Chad"
+        ],
+        "right_answer": "Chad"
+    },
+    {
+        "img": "./images/mali.png",
+        "options": [
+            "Guinea",
+            "Mali",
+            "Senegal"
+        ],
+        "right_answer": "Mali"
+    },
+    {
+        "img": "./images/bolivia.png",
+        "options": [
+            "Bolivia",
+            "Lithuania",
+            "Benin"
+        ],
+        "right_answer": "Bolivia"
+    },
+    {
+        "img": "./images/nepal.png",
+        "options": [
+            "Madagascar",
+            "Nepal",
+            "Benin"
+        ],
+        "right_answer": "Nepal"
+    },
+    {
+        "img": "./images/turkey.png",
+        "options": [
+            "Pakistan",
+            "Tunisia",
+            "Turkey"
+        ],
+        "right_answer": "Turkey"
+    }
+
+]
