@@ -111,7 +111,7 @@ We welcome contributions from the open-source community to make GeoQuest even be
 
 ## Authors & Acknowledgment
 
-- Hannieh Zaab
+- Hanieh Zaab
 - Justin Graham
 - Mohammed Nadim Ahmed
 - Stephen Murray
