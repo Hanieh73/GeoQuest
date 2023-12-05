@@ -1,6 +1,6 @@
 # GeoQuest
 
-GeoQuest is a quiz-based geography learning platform that takes you on a virtual journey around the world while testing your knowledge of geography.
+GeoQuest is a quiz-based geography learning platform that takes you on a virtual journey around the world while testing your knowledge of geography. https://geo-quest.netlify.app/
 
 ## Table of Contents
 
